@@ -141,7 +141,7 @@ export function IntakeForm() {
             {/* Helper text */}
             <p className="text-sm text-center text-muted-foreground mt-4">
               {submitted
-                ? 'Thanks for reaching out! We&apos;ll be in touch shortly.'
+                ? "Thanks for reaching out! We'll be in touch shortly."
                 : "We'll get back to you shortly."}
             </p>
           </div>
