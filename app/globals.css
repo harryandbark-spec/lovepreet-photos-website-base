@@ -2,48 +2,49 @@
 @import 'tw-animate-css';
 
 @theme inline {
-  --font-sans: var(--font-geist-sans), 'Geist Fallback', system-ui, sans-serif;
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-mono: var(--font-montserrat), system-ui, sans-serif;
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
+  --color-canvas: var(--canvas);
+  --color-ink: var(--ink);
+  --color-linen: var(--linen);
+  --color-champagne: var(--champagne);
+
+  --color-background: var(--canvas);
+  --color-foreground: var(--ink);
 }
 
 :root {
-  /* Brand Colors - Bold & Modern */
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-
-  /* Primary: Deep Black */
-  --primary: #0a0a0a;
-  --primary-foreground: #ffffff;
-
-  /* Accent: Bold Saturated Cyan */
-  --accent: #00d9ff;
-  --accent-foreground: #0a0a0a;
-
-  /* Muted: Cool Grays */
-  --muted: #f0f0f0;
-  --muted-foreground: #666666;
+  /* Fine-Art Luxury Palette */
+  --canvas: #ffffff;
+  --ink: #1a1a1a;
+  --linen: #f7f5f2;
+  --champagne: #c5a882;
 }
 
 @layer base {
   html {
-    @apply font-sans scroll-smooth;
+    @apply scroll-smooth;
+    font-family: var(--font-sans);
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-canvas text-ink antialiased;
+    font-family: var(--font-sans);
   }
 }
 
 @layer components {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Montserrat eyebrow / nav label utility */
+  .eyebrow {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 400;
   }
 }

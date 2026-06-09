@@ -3,79 +3,94 @@
 import { useState } from 'react'
 
 export function Hero() {
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [showreelOpen, setShowreelOpen] = useState(false)
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-black">
-      {/* Full-bleed placeholder image background */}
-      <div
-        className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-black"
-        style={{
-          backgroundImage:
-            'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
-        }}
-      />
-
-      {/* Gradient overlay (bottom to transparent) for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-
-      {/* Content container - bottom-left and bottom-right positioning */}
-      <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 lg:p-12">
-        {/* Bottom-left content */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 sm:gap-0">
-          <div className="flex flex-col gap-4 max-w-md text-white">
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-balance">
-              One Vision. <br />
-              Two Mediums.
+    <section id="top" className="relative bg-canvas pt-24 lg:pt-28">
+      <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
+        <div className="grid items-center gap-10 py-12 lg:grid-cols-[55%_45%] lg:gap-16 lg:py-20">
+          {/* Left column */}
+          <div className="flex flex-col">
+            <span className="eyebrow text-xs text-ink/70">
+              Langley &middot; Surrey &middot; Vancouver
+            </span>
+            <h1 className="mt-6 font-display font-medium leading-[1.05] text-ink [font-size:clamp(2.25rem,5vw,4rem)]">
+              One Vision. Two Mediums.
+              <br />
+              <em className="text-champagne">Captured as One.</em>
             </h1>
-
-            {/* Subline */}
-            <p className="text-xl sm:text-2xl font-light text-gray-100">
-              Captured as One.
+            <p className="mt-8 max-w-xl font-sans text-base leading-relaxed text-ink/75">
+              We handcraft fine-art imagery and heirloom cinematic films for
+              luxury South Asian celebrations across Langley, Surrey, and the
+              Lower Mainland. By blending timeless stillness with moving emotion
+              under a single creative direction, we eliminate vendor friction —
+              leaving you completely present in your moments.
             </p>
-
-            {/* Location */}
-            <p className="text-sm sm:text-base text-gray-300 font-medium tracking-wide">
-              Langley · Surrey · Vancouver
-            </p>
-
-            {/* CTAs - bottom-left */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 pt-4">
-              {/* Primary CTA */}
+            <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
               <a
-                href="#contact"
-                className="inline-flex px-6 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-200 active:scale-95"
+                href="#inquire"
+                className="rounded-full bg-ink px-8 py-3.5 font-sans text-sm text-canvas transition-opacity hover:opacity-90"
               >
                 Start the Conversation
               </a>
-
-              {/* Phone CTA */}
               <a
                 href="tel:+16043657401"
-                className="inline-flex items-center gap-2 px-4 py-3 text-white font-medium hover:text-accent transition-colors duration-200"
+                className="group relative font-sans text-sm text-ink"
               >
-                <span>+1 604-365-7401</span>
+                Call +1 604-365-7401
+                <span className="absolute -bottom-1 left-0 h-px w-full bg-champagne transition-all duration-300 group-hover:w-0" />
               </a>
             </div>
           </div>
 
-          {/* Play Showreel button - bottom-right */}
-          <button
-            onClick={() => setIsPlaying(true)}
-            className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-accent/80 text-accent-foreground hover:bg-accent transition-all duration-200 active:scale-95 flex-shrink-0"
-            aria-label="Play showreel"
-          >
-            <svg
-              className="w-5 h-5 sm:w-6 sm:h-6 ml-0.5"
-              fill="currentColor"
-              viewBox="0 0 24 24"
+          {/* Right column - image frame */}
+          <div className="relative">
+            <div
+              className="relative flex aspect-[2/3] items-end overflow-hidden bg-linen"
+              role="img"
+              aria-label="Regal Sikh wedding couple in traditional cream and deep red attire walking through a sun-drenched Langley forest pathway."
             >
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </button>
+              <p className="m-6 font-display text-lg italic leading-relaxed text-ink/40">
+                Regal Sikh wedding couple in traditional cream and deep red
+                attire walking through a sun-drenched Langley forest pathway.
+              </p>
+
+              {/* Play Showreel button */}
+              <button
+                type="button"
+                onClick={() => setShowreelOpen(true)}
+                className="absolute bottom-5 right-5 flex items-center gap-2 rounded-full bg-ink px-5 py-3 font-sans text-xs text-canvas transition-transform hover:scale-105"
+              >
+                <span className="text-[0.65rem]">&#9654;</span>
+                Play Showreel
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+
+      {/* Showreel modal */}
+      {showreelOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-6 backdrop-blur-xl">
+          <button
+            type="button"
+            aria-label="Close showreel"
+            onClick={() => setShowreelOpen(false)}
+            className="absolute right-6 top-6 text-4xl leading-none text-canvas"
+          >
+            &times;
+          </button>
+          <div
+            className="flex aspect-video w-full max-w-4xl items-center justify-center bg-linen"
+            role="img"
+            aria-label="Cinematic wedding showreel placeholder."
+          >
+            <span className="font-display text-2xl italic text-ink/40">
+              Showreel
+            </span>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

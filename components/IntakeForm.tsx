@@ -3,149 +3,111 @@
 import { useState } from 'react'
 
 export function IntakeForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    details: '',
-  })
   const [submitted, setSubmitted] = useState(false)
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    console.log('Form submitted:', formData)
+    console.log('[v0] Intake form submitted')
     setSubmitted(true)
-    setTimeout(() => {
-      setFormData({ name: '', email: '', phone: '', details: '' })
-      setSubmitted(false)
-    }, 3000)
   }
 
   return (
-    <section
-      id="contact"
-      className="w-full py-16 sm:py-24 px-6 sm:px-8 lg:px-12 bg-background"
-    >
-      <div className="max-w-2xl mx-auto">
-        {/* Section heading */}
-        <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">
-            Start the Conversation
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Tell us about your vision and let&apos;s create something unforgettable.
-          </p>
-        </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Name field */}
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-semibold text-foreground mb-2"
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              placeholder="Your name"
-              className="w-full px-4 py-3 border-2 border-muted bg-background text-foreground placeholder-muted-foreground rounded-lg focus:outline-none focus:border-accent transition-colors duration-200"
-            />
-          </div>
-
-          {/* Email field */}
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-semibold text-foreground mb-2"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              placeholder="your@email.com"
-              className="w-full px-4 py-3 border-2 border-muted bg-background text-foreground placeholder-muted-foreground rounded-lg focus:outline-none focus:border-accent transition-colors duration-200"
-            />
-          </div>
-
-          {/* Phone field (optional) */}
-          <div>
-            <label
-              htmlFor="phone"
-              className="block text-sm font-semibold text-foreground mb-2"
-            >
-              Phone <span className="text-muted-foreground font-normal">(optional)</span>
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="+1 (604) 000-0000"
-              className="w-full px-4 py-3 border-2 border-muted bg-background text-foreground placeholder-muted-foreground rounded-lg focus:outline-none focus:border-accent transition-colors duration-200"
-            />
-          </div>
-
-          {/* Details field */}
-          <div>
-            <label
-              htmlFor="details"
-              className="block text-sm font-semibold text-foreground mb-2"
-            >
-              Project Details
-            </label>
-            <textarea
-              id="details"
-              name="details"
-              value={formData.details}
-              onChange={handleChange}
-              required
-              placeholder="Tell us about your event, timeline, and vision..."
-              rows={5}
-              className="w-full px-4 py-3 border-2 border-muted bg-background text-foreground placeholder-muted-foreground rounded-lg focus:outline-none focus:border-accent transition-colors duration-200 resize-none"
-            />
-          </div>
-
-          {/* Submit button */}
-          <div className="pt-4">
-            <button
-              type="submit"
-              disabled={submitted}
-              className="w-full px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-200 active:scale-95 disabled:opacity-75 disabled:cursor-not-allowed"
-            >
-              {submitted ? 'Message Sent!' : 'Send'}
-            </button>
-
-            {/* Helper text */}
-            <p className="text-sm text-center text-muted-foreground mt-4">
-              {submitted
-                ? "Thanks for reaching out! We'll be in touch shortly."
-                : "We'll get back to you shortly."}
+    <section id="inquire" className="bg-linen py-20 lg:py-28">
+      <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+          {/* Left column */}
+          <div className="flex flex-col">
+            <h2 className="font-display text-4xl italic text-ink lg:text-5xl">
+              Secure Your Timeline.
+            </h2>
+            <p className="mt-6 max-w-md font-sans text-base leading-relaxed text-ink/70">
+              Dates across the Lower Mainland wedding seasons book up to a year
+              in advance. Let&apos;s start mapping your legacy collection today.
             </p>
+            <a
+              href="tel:+16043657401"
+              className="group relative mt-8 inline-block w-fit font-display text-2xl italic text-ink"
+            >
+              Prefer to talk? +1 604-365-7401
+              <span className="absolute -bottom-1 left-0 h-px w-full bg-champagne transition-all duration-300 group-hover:w-0" />
+            </a>
           </div>
-        </form>
+
+          {/* Right column - form */}
+          <div>
+            {submitted ? (
+              <div className="flex h-full min-h-[300px] flex-col items-start justify-center border border-champagne px-8 py-10">
+                <p className="font-display text-3xl italic text-ink">
+                  Thank you.
+                </p>
+                <p className="mt-4 font-sans text-base leading-relaxed text-ink/70">
+                  Your inquiry has been received. We&apos;ll be in touch shortly
+                  to schedule your private consultation.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="event-type"
+                    className="eyebrow text-xs text-ink/60"
+                  >
+                    Event Classification
+                  </label>
+                  <select
+                    id="event-type"
+                    name="event-type"
+                    defaultValue=""
+                    className="border border-ink/20 bg-canvas px-4 py-3 font-sans text-base text-ink focus:border-ink focus:outline-none"
+                  >
+                    <option value="" disabled>
+                      Select your celebration
+                    </option>
+                    <option>Multi-Day South Asian Wedding</option>
+                    <option>Intimate Ceremony &amp; Reception</option>
+                    <option>Engagement Portraiture Session</option>
+                  </select>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="date-venues"
+                    className="eyebrow text-xs text-ink/60"
+                  >
+                    Wedding Date &amp; Venues
+                  </label>
+                  <input
+                    id="date-venues"
+                    name="date-venues"
+                    type="text"
+                    placeholder="e.g. June 2026 · Langley, Surrey, Vancouver"
+                    className="border border-ink/20 bg-canvas px-4 py-3 font-sans text-base text-ink placeholder:text-ink/40 focus:border-ink focus:outline-none"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="story" className="eyebrow text-xs text-ink/60">
+                    Your Story
+                  </label>
+                  <textarea
+                    id="story"
+                    name="story"
+                    rows={5}
+                    placeholder="Tell us about your visual inspiration & celebration story."
+                    className="resize-none border border-ink/20 bg-canvas px-4 py-3 font-sans text-base text-ink placeholder:text-ink/40 focus:border-ink focus:outline-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-ink px-6 py-4 font-sans text-sm text-canvas transition-opacity hover:opacity-90"
+                >
+                  Request Availability Blueprint
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   )
