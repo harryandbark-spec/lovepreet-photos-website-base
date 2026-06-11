@@ -25,7 +25,7 @@
 
 @layer base {
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth bg-canvas;
     font-family: var(--font-sans);
   }
 
@@ -54,34 +54,81 @@
   /* Scroll-triggered reveal — add .reveal to elements, JS adds .revealed */
   .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transform: translateY(28px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal.revealed {
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Flourish section divider — signature-style underline accent */
+  .flourish-divider {
+    position: relative;
+    display: inline-block;
+  }
+
+  .flourish-divider::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 1px;
+    background: var(--champagne);
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .flourish-divider:hover::after {
+    width: 80px;
+  }
+
+  /* Section heading accent — thin champagne line below heading */
+  .heading-flourish {
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  .heading-flourish::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--champagne),
+      transparent
+    );
+  }
 }
+
+/* ─── Keyframes ─────────────────────────────────────── */
 
 /* Scroll dot bounce */
 @keyframes scrollDot {
   0%,
   100% {
     transform: translateY(0);
-    opacity: 0.4;
+    opacity: 0.35;
   }
   50% {
-    transform: translateY(6px);
-    opacity: 0.8;
+    transform: translateY(7px);
+    opacity: 0.9;
   }
 }
 
-/* Tab panel fade */
+/* Tab panel fade-up */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -89,6 +136,47 @@
   }
 }
 
-[role='tabpanel'] {
-  animation: fadeIn 0.35s ease forwards;
+/* Stagger gallery reveal */
+@keyframes staggerReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
+
+/* Pulse glow for premium card badge */
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(197, 168, 130, 0);
+  }
+  50% {
+    box-shadow: 0 0 24px 4px rgba(197, 168, 130, 0.18);
+  }
+}
+
+/* Subtle shimmer for CTA button */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+[role='tabpanel'] {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Gallery stagger utility classes */
+.gallery-item-1 { animation-delay: 0ms; }
+.gallery-item-2 { animation-delay: 80ms; }
+.gallery-item-3 { animation-delay: 160ms; }
+.gallery-item-4 { animation-delay: 240ms; }
+.gallery-item-5 { animation-delay: 320ms; }
+.gallery-item-6 { animation-delay: 400ms; }

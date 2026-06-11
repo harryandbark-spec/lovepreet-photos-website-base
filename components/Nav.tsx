@@ -31,14 +31,15 @@ export function Nav() {
       }`}
     >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-5 lg:px-10">
-        {/* Wordmark */}
-        <a href="#top" className="flex flex-col leading-none">
-          <span className="font-mono text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-white">
-            Lovepreet
-          </span>
-          <span className="font-mono text-[0.55rem] font-light uppercase tracking-[0.38em] text-white/45">
-            Photos &amp; Films
-          </span>
+        {/* Wordmark — signature logo */}
+        <a href="#top" className="flex items-center" aria-label="Lovepreet Photos & Films — home">
+          <img
+            src="/logo.png"
+            alt="Lovepreet Photos & Films"
+            className={`h-12 w-auto object-contain transition-all duration-500 lg:h-14 ${
+              scrolled ? 'brightness-0 invert' : 'brightness-0 invert'
+            }`}
+          />
         </a>
 
         {/* Desktop nav */}
@@ -58,7 +59,7 @@ export function Nav() {
         {/* Desktop CTA */}
         <a
           href="#inquire"
-          className="hidden rounded-full border border-white/20 px-5 py-2.5 font-sans text-xs text-white/80 transition-all duration-300 hover:border-champagne/60 hover:text-white lg:inline-block"
+          className="hidden rounded-full border border-champagne/30 px-5 py-2.5 font-sans text-xs text-white/80 transition-all duration-300 hover:border-champagne hover:bg-champagne/10 hover:text-white lg:inline-block"
         >
           Check Availability
         </a>

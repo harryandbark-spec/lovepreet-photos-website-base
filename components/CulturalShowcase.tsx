@@ -47,10 +47,10 @@ export function CulturalShowcase() {
         {/* Header */}
         <div className="flex flex-col items-center">
           <span className="eyebrow text-[0.65rem] text-champagne">South Asian Weddings</span>
-          <h2 className="mt-4 text-center font-display text-4xl italic text-canvas lg:text-5xl">
+          <h2 className="mt-4 text-center font-display text-4xl italic text-canvas lg:text-5xl heading-flourish">
             Every Ritual. Fully Honoured.
           </h2>
-          <p className="mt-5 max-w-2xl text-center font-sans text-base leading-relaxed text-canvas/55">
+          <p className="mt-8 max-w-2xl text-center font-sans text-base leading-relaxed text-canvas/55">
             Multi-day South Asian celebrations are layered with meaning. We have the
             cultural fluency and the creative range to document every chapter with the
             depth it deserves.
@@ -59,9 +59,9 @@ export function CulturalShowcase() {
 
         {/* Tabs + content */}
         <div className="mt-14">
-          {/* Tab bar */}
+          {/* Tab bar — redesigned with numbered indicators */}
           <div
-            className="flex gap-1 overflow-x-auto border-b border-white/10 pb-0"
+            className="flex gap-0 overflow-x-auto"
             role="tablist"
             aria-label="Ceremony types"
           >
@@ -73,16 +73,26 @@ export function CulturalShowcase() {
                 aria-selected={active === i}
                 aria-controls={`panel-${c.id}`}
                 onClick={() => setActive(i)}
-                className={`relative shrink-0 px-6 py-3.5 font-mono text-xs uppercase tracking-[0.18em] transition-colors duration-200 focus:outline-none ${
+                className={`group relative flex shrink-0 flex-col items-start px-6 py-4 text-left transition-all duration-300 focus:outline-none border-b-2 ${
                   active === i
-                    ? 'text-canvas'
-                    : 'text-canvas/35 hover:text-canvas/65'
+                    ? 'border-champagne bg-white/5'
+                    : 'border-transparent hover:bg-white/3 hover:border-white/20'
                 }`}
               >
-                {c.label}
-                {active === i && (
-                  <span className="absolute bottom-0 left-0 right-0 h-px bg-champagne" />
-                )}
+                <span
+                  className={`font-mono text-[0.55rem] uppercase tracking-[0.25em] transition-colors duration-200 ${
+                    active === i ? 'text-champagne' : 'text-canvas/25 group-hover:text-canvas/45'
+                  }`}
+                >
+                  0{i + 1}
+                </span>
+                <span
+                  className={`mt-0.5 font-display text-base italic transition-colors duration-200 ${
+                    active === i ? 'text-canvas' : 'text-canvas/45 group-hover:text-canvas/70'
+                  }`}
+                >
+                  {c.label}
+                </span>
               </button>
             ))}
           </div>
@@ -91,19 +101,28 @@ export function CulturalShowcase() {
           <div
             id={`panel-${ceremony.id}`}
             role="tabpanel"
-            className="mt-0 grid gap-0 overflow-hidden lg:grid-cols-2"
+            className="grid gap-0 overflow-hidden lg:grid-cols-2"
             key={ceremony.id}
           >
             {/* Text side */}
-            <div className="flex flex-col justify-center border-b border-white/8 py-10 pr-0 lg:border-b-0 lg:border-r lg:py-14 lg:pr-14">
-              <h3 className="font-display text-3xl italic text-canvas lg:text-4xl">
+            <div className="flex flex-col justify-center border-b border-white/8 py-10 pr-0 lg:border-b-0 lg:border-r lg:border-r-white/10 lg:py-14 lg:pr-14">
+              {/* Ceremony number */}
+              <span className="font-mono text-[0.55rem] uppercase tracking-[0.3em] text-champagne/50">
+                Ceremony 0{active + 1}
+              </span>
+              <h3 className="mt-3 font-display text-3xl italic text-canvas lg:text-4xl">
                 {ceremony.title}
               </h3>
+              {/* Flourish line */}
+              <div className="mt-4 flex items-center gap-3">
+                <div className="h-px w-8 bg-champagne/50" />
+                <div className="h-px w-20 bg-gradient-to-r from-champagne/50 to-transparent" />
+              </div>
               <p className="mt-6 font-sans text-base leading-relaxed text-canvas/60">
                 {ceremony.body}
               </p>
-              <div className="mt-8 border-l-2 border-champagne/50 pl-4">
-                <p className="font-mono text-xs uppercase tracking-[0.2em] text-champagne/70">
+              <div className="mt-8 border-l-2 border-champagne/40 pl-4">
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-champagne/65">
                   {ceremony.detail}
                 </p>
               </div>
@@ -115,9 +134,13 @@ export function CulturalShowcase() {
                 <img
                   src={ceremony.img}
                   alt={ceremony.title}
-                  className="h-full w-full object-cover opacity-75 transition-opacity duration-500"
+                  className="h-full w-full object-cover opacity-80 transition-all duration-700 hover:scale-105 hover:opacity-90"
                   loading="lazy"
                 />
+                {/* Image overlay label */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink/70 to-transparent p-5">
+                  <p className="font-display text-sm italic text-canvas/60">{ceremony.title}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -128,7 +151,7 @@ export function CulturalShowcase() {
           className="mt-16 overflow-hidden border border-champagne/25 p-8 lg:p-10"
           style={{
             background:
-              'linear-gradient(135deg, rgba(197,168,130,0.06) 0%, rgba(197,168,130,0.02) 100%)',
+              'linear-gradient(135deg, rgba(197,168,130,0.07) 0%, rgba(197,168,130,0.02) 100%)',
           }}
         >
           <div className="grid gap-8 lg:grid-cols-[1fr_auto]">
@@ -165,7 +188,7 @@ export function CulturalShowcase() {
             <div className="flex items-center self-start lg:self-center">
               <a
                 href="#inquire"
-                className="whitespace-nowrap rounded-full border border-champagne/40 px-7 py-3 font-sans text-sm text-canvas/80 transition-all duration-300 hover:border-champagne hover:text-canvas"
+                className="whitespace-nowrap rounded-full border border-champagne/40 px-7 py-3 font-sans text-sm text-canvas/80 transition-all duration-300 hover:border-champagne hover:bg-champagne/10 hover:text-canvas"
               >
                 Ask About Streaming
               </a>

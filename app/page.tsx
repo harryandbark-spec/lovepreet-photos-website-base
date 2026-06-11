@@ -9,6 +9,7 @@ import { Pricing } from '@/components/Pricing'
 import { Timeline } from '@/components/Timeline'
 import { Testimonial } from '@/components/Testimonial'
 import { FaqAccordion } from '@/components/FaqAccordion'
+import { CTABanner } from '@/components/CTABanner'
 import { IntakeForm } from '@/components/IntakeForm'
 import { Footer } from '@/components/Footer'
 
@@ -27,6 +28,7 @@ export default function Home() {
         <Timeline />
         <Testimonial />
         <FaqAccordion />
+        <CTABanner />
         <IntakeForm />
       </main>
       <Footer />
