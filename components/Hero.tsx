@@ -44,16 +44,27 @@ export function Hero() {
             Langley &middot; Surrey &middot; Vancouver
           </p>
 
-          <h1
-            className={`mt-5 font-display leading-[1.02] text-white transition-all duration-800 ease-out [font-size:clamp(3.2rem,7.5vw,7rem)] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-            style={{ transitionDelay: '180ms', fontWeight: 400 }}
+          {/* Headline with flourish accent */}
+          <div
+            className={`mt-5 transition-all duration-800 ease-out ${visible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            style={{ transitionDelay: '180ms' }}
           >
-            One Vision.
-            <br />
-            Two Mediums.
-            <br />
-            <em className="text-champagne">Captured as One.</em>
-          </h1>
+            <h1
+              className="font-display leading-[1.02] text-white [font-size:clamp(3.2rem,7.5vw,7rem)]"
+              style={{ fontWeight: 400 }}
+            >
+              One Vision.
+              <br />
+              Two Mediums.
+              <br />
+              <em className="text-champagne">Captured as One.</em>
+            </h1>
+            {/* Signature flourish underline — inspired by logo */}
+            <div className="mt-5 flex items-center gap-3">
+              <div className="h-px w-10 bg-champagne/60" />
+              <div className="h-px flex-1 max-w-[120px] bg-gradient-to-r from-champagne/60 to-transparent" />
+            </div>
+          </div>
 
           <p
             className={`mt-7 max-w-lg font-sans text-base leading-relaxed text-white/55 transition-all duration-700 ease-out lg:text-lg ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}
@@ -68,15 +79,18 @@ export function Hero() {
             className={`mt-10 flex flex-col items-start gap-4 transition-all duration-700 ease-out sm:flex-row sm:items-center ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}
             style={{ transitionDelay: '440ms' }}
           >
+            {/* Primary CTA — more prominent */}
             <a
               href="#inquire"
-              className="rounded-full bg-champagne px-8 py-3.5 font-sans text-sm font-medium text-ink transition-all duration-300 hover:bg-[#d4b896] hover:shadow-[0_8px_32px_rgba(197,168,130,0.35)]"
+              className="group relative overflow-hidden rounded-full bg-champagne px-9 py-4 font-sans text-sm font-medium text-ink transition-all duration-300 hover:shadow-[0_12px_40px_rgba(197,168,130,0.45)] hover:-translate-y-0.5 active:translate-y-0"
             >
-              Start the Conversation
+              <span className="relative z-10">Start the Conversation</span>
+              {/* Shimmer on hover */}
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
             </a>
             <a
               href="tel:+16043657401"
-              className="font-mono text-sm tracking-widest text-white/50 transition-colors duration-200 hover:text-white/80"
+              className="font-mono text-sm tracking-widest text-white/45 transition-colors duration-200 hover:text-white/80"
             >
               +1 604-365-7401
             </a>
@@ -89,23 +103,26 @@ export function Hero() {
         type="button"
         onClick={() => setShowreelOpen(true)}
         aria-label="Play showreel"
-        className={`absolute bottom-20 right-6 z-10 flex h-16 w-16 items-center justify-center rounded-full border border-white/15 bg-white/8 backdrop-blur-md transition-all duration-700 ease-out hover:scale-110 hover:border-white/30 hover:bg-white/15 lg:bottom-24 lg:right-10 lg:h-[72px] lg:w-[72px] ${visible ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute bottom-20 right-6 z-10 flex h-16 w-16 items-center justify-center rounded-full border border-white/15 backdrop-blur-md transition-all duration-700 ease-out hover:scale-110 hover:border-champagne/50 hover:bg-white/15 lg:bottom-24 lg:right-10 lg:h-[72px] lg:w-[72px] ${visible ? 'opacity-100' : 'opacity-0'}`}
         style={{ transitionDelay: '560ms', background: 'rgba(255,255,255,0.07)' }}
       >
-        <svg width="16" height="18" viewBox="0 0 16 18" fill="none" className="ml-0.5">
+        {/* Rotating ring */}
+        <span className="absolute inset-0 rounded-full border border-champagne/20 transition-all duration-500 hover:scale-110" />
+        <svg width="16" height="18" viewBox="0 0 16 18" fill="none" className="ml-0.5 relative z-10">
           <path d="M1 1.5L15 9L1 16.5V1.5Z" fill="white" fillOpacity="0.9" />
         </svg>
       </button>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — more prominent */}
       <div
-        className={`absolute bottom-7 left-1/2 z-10 -translate-x-1/2 transition-all duration-700 ${visible ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute bottom-7 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-700 ${visible ? 'opacity-100' : 'opacity-0'}`}
         style={{ transitionDelay: '700ms' }}
         aria-hidden="true"
       >
-        <div className="flex h-10 w-6 items-start justify-center rounded-full border border-white/15 pt-2">
+        <span className="font-mono text-[0.55rem] uppercase tracking-[0.25em] text-white/25">Scroll</span>
+        <div className="flex h-10 w-6 items-start justify-center rounded-full border border-white/20 pt-2">
           <div
-            className="h-2 w-0.5 rounded-full bg-white/35"
+            className="h-2 w-0.5 rounded-full bg-champagne/60"
             style={{ animation: 'scrollDot 1.8s ease-in-out infinite' }}
           />
         </div>
@@ -114,14 +131,14 @@ export function Hero() {
       {/* Showreel modal */}
       {showreelOpen && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 p-6 backdrop-blur-2xl"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/92 p-6 backdrop-blur-2xl"
           onClick={() => setShowreelOpen(false)}
         >
           <button
             type="button"
             aria-label="Close showreel"
             onClick={() => setShowreelOpen(false)}
-            className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-lg text-white transition-colors hover:bg-white/10"
+            className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-lg text-white transition-all hover:bg-white/10 hover:border-white/40"
           >
             &times;
           </button>

@@ -62,10 +62,10 @@ export function Pricing() {
         {/* Header */}
         <div className="flex flex-col items-center">
           <span className="eyebrow text-[0.65rem] text-champagne">Investment</span>
-          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl">
+          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish">
             Your Legacy Collection
           </h2>
-          <p className="mt-5 max-w-xl text-center font-sans text-base leading-relaxed text-ink/60">
+          <p className="mt-8 max-w-xl text-center font-sans text-base leading-relaxed text-ink/60">
             Every collection is custom-tailored. The prices below are starting
             points — final investment reflects your specific itinerary and vision.
           </p>
@@ -76,22 +76,37 @@ export function Pricing() {
           {TIERS.map((tier) => (
             <div
               key={tier.name}
-              className={`flex flex-col border ${
+              className={`group relative flex flex-col border transition-all duration-300 ${
                 tier.highlight
-                  ? 'border-champagne bg-ink text-canvas shadow-[0_16px_64px_rgba(0,0,0,0.18)]'
-                  : 'border-ink/12 bg-canvas'
+                  ? 'border-champagne/60 bg-ink text-canvas shadow-[0_20px_80px_rgba(0,0,0,0.22),0_0_0_1px_rgba(197,168,130,0.2)] hover:shadow-[0_24px_100px_rgba(0,0,0,0.28),0_0_40px_rgba(197,168,130,0.12)]'
+                  : 'border-ink/12 bg-canvas hover:border-ink/25 hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)]'
               }`}
             >
+              {/* Premium glow ring */}
+              {tier.highlight && (
+                <div
+                  className="absolute -inset-px rounded-[1px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{
+                    background:
+                      'linear-gradient(135deg, rgba(197,168,130,0.3) 0%, transparent 50%, rgba(197,168,130,0.15) 100%)',
+                    animation: 'pulseGlow 3s ease-in-out infinite',
+                  }}
+                />
+              )}
+
               {/* Card header */}
               <div
-                className={`border-b px-8 py-8 ${
+                className={`relative border-b px-8 py-8 ${
                   tier.highlight ? 'border-white/10' : 'border-ink/8'
                 }`}
               >
                 {tier.highlight && (
-                  <span className="eyebrow mb-4 block text-[0.6rem] text-champagne">
-                    Most Popular
-                  </span>
+                  <div className="mb-4 flex items-center gap-2">
+                    <span className="h-px w-4 bg-champagne" />
+                    <span className="eyebrow text-[0.6rem] text-champagne">
+                      Most Popular
+                    </span>
+                  </div>
                 )}
                 <h3
                   className={`font-display text-2xl ${
@@ -117,14 +132,18 @@ export function Pricing() {
                   </span>
                   <span
                     className={`font-display text-4xl ${
-                      tier.highlight ? 'text-canvas' : 'text-ink'
+                      tier.highlight ? 'text-champagne' : 'text-ink'
                     }`}
                   >
                     {tier.price}
                   </span>
                 </div>
+                {/* Flourish separator */}
+                <div className="mt-4 flex items-center gap-3">
+                  <div className={`h-px w-8 ${tier.highlight ? 'bg-champagne/40' : 'bg-ink/15'}`} />
+                </div>
                 <p
-                  className={`mt-4 font-sans text-sm leading-relaxed ${
+                  className={`mt-3 font-sans text-sm leading-relaxed ${
                     tier.highlight ? 'text-canvas/55' : 'text-ink/55'
                   }`}
                 >
@@ -133,14 +152,19 @@ export function Pricing() {
               </div>
 
               {/* Features */}
-              <div className="flex flex-1 flex-col px-8 py-8">
-                <ul className="flex flex-1 flex-col gap-3.5">
+              <div className="relative flex flex-1 flex-col px-8 py-8">
+                <ul className="flex flex-1 flex-col gap-4">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-champagne" />
+                      {/* Feature icon — champagne diamond */}
+                      <span
+                        className={`mt-1.5 h-1.5 w-1.5 shrink-0 rotate-45 ${
+                          tier.highlight ? 'bg-champagne' : 'bg-champagne/70'
+                        }`}
+                      />
                       <span
                         className={`font-sans text-sm leading-relaxed ${
-                          tier.highlight ? 'text-canvas/65' : 'text-ink/65'
+                          tier.highlight ? 'text-canvas/70' : 'text-ink/65'
                         }`}
                       >
                         {feature}
@@ -151,10 +175,10 @@ export function Pricing() {
 
                 <a
                   href="#inquire"
-                  className={`mt-8 block w-full py-3.5 text-center font-sans text-sm transition-all duration-300 ${
+                  className={`mt-8 block w-full py-4 text-center font-sans text-sm transition-all duration-300 ${
                     tier.highlight
-                      ? 'bg-champagne text-ink hover:bg-[#d4b896]'
-                      : 'border border-ink/20 text-ink hover:border-ink hover:bg-ink hover:text-canvas'
+                      ? 'bg-champagne text-ink hover:bg-[#d4b896] hover:shadow-[0_8px_32px_rgba(197,168,130,0.35)] hover:-translate-y-0.5'
+                      : 'border border-ink/20 text-ink hover:border-ink hover:bg-ink hover:text-canvas hover:-translate-y-0.5'
                   }`}
                 >
                   {tier.cta}
@@ -164,10 +188,18 @@ export function Pricing() {
           ))}
         </div>
 
-        <p className="mt-8 text-center font-sans text-sm text-ink/40">
-          All collections include a private consultation. Final pricing confirmed after we
-          map your specific itinerary.
-        </p>
+        {/* Flourish divider + note */}
+        <div className="mt-10 flex flex-col items-center gap-4">
+          <div className="flex items-center gap-4" aria-hidden="true">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-champagne/40" />
+            <div className="h-1 w-1 rounded-full bg-champagne/40" />
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-champagne/40" />
+          </div>
+          <p className="text-center font-sans text-sm text-ink/40">
+            All collections include a private consultation. Final pricing confirmed after we
+            map your specific itinerary.
+          </p>
+        </div>
       </div>
     </section>
   )
