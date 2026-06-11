@@ -11,6 +11,7 @@ import { Testimonial } from '@/components/Testimonial'
 import { FaqAccordion } from '@/components/FaqAccordion'
 import CTABanner from '@/components/CTABanner'
 import { IntakeForm } from '@/components/IntakeForm'
+import TopFooter from '@/components/TopFooter'
 import { Footer } from '@/components/Footer'
 
 export default function Home() {
@@ -30,6 +31,7 @@ export default function Home() {
         <FaqAccordion />
         <CTABanner />
         <IntakeForm />
+        <TopFooter />
       </main>
       <Footer />
     </>
