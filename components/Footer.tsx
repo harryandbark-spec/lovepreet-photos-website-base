@@ -1,113 +1,156 @@
+'use client'
+
+const NAV_COLUMNS = [
+  {
+    heading: 'Services',
+    links: [
+      { label: 'Wedding Photography', href: '#offerings' },
+      { label: 'Wedding Films', href: '#offerings' },
+      { label: 'Engagement Sessions', href: '#offerings' },
+      { label: 'Pre-Wedding Portraits', href: '#offerings' },
+      { label: 'Family Portraits', href: '#offerings' },
+    ],
+  },
+  {
+    heading: 'Portfolio',
+    links: [
+      { label: 'The Gallery', href: '#gallery' },
+      { label: 'Sikh Ceremonies', href: '#showcase' },
+      { label: 'Hindu Ceremonies', href: '#showcase' },
+      { label: 'Reception Evenings', href: '#showcase' },
+      { label: 'Featured Couples', href: '#gallery' },
+    ],
+  },
+  {
+    heading: 'Process',
+    links: [
+      { label: 'Investment', href: '#pricing' },
+      { label: 'Our Approach', href: '#logistics' },
+      { label: 'Timeline & Logistics', href: '#logistics' },
+      { label: 'FAQ', href: '#faq' },
+      { label: 'Begin Your Story', href: '#inquire' },
+    ],
+  },
+  {
+    heading: 'Contact',
+    links: [
+      { label: '@lovepreetphotography.ca', href: 'https://www.instagram.com/lovepreetphotography.ca/', external: true },
+      { label: '+1 604-365-7401', href: 'tel:+16043657401' },
+      { label: 'hello@lovepreetphotos.ca', href: 'mailto:hello@lovepreetphotos.ca' },
+      { label: 'Langley · Surrey · Vancouver', href: '#' },
+    ],
+  },
+]
+
+const LEGAL_LINKS = [
+  { label: 'Privacy Policy', href: '#' },
+  { label: 'Terms of Service', href: '#' },
+]
+
 export function Footer() {
   return (
-    <footer className="border-t border-champagne/30 bg-ink text-canvas">
-      <div className="mx-auto max-w-[1440px] px-6 py-16 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-[2fr_1fr_1fr] lg:gap-10">
-          {/* Col 1 - Brand */}
-          <div>
-            <p className="font-mono text-sm font-medium uppercase tracking-[0.28em] text-canvas">
-              Lovepreet Photos &amp; Films
-            </p>
-            <p className="mt-5 max-w-xs font-sans text-sm leading-relaxed text-canvas/50">
-              Fine-art wedding photography and heirloom cinema for luxury South
-              Asian celebrations across Langley, Surrey, and Metro Vancouver,
-              British Columbia.
-            </p>
-            <div className="mt-8 flex gap-4">
-              <a
-                href="https://www.instagram.com/lovepreetphotography.ca/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/12 text-canvas/50 transition-all duration-200 hover:border-champagne/50 hover:text-canvas"
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
-                </svg>
-              </a>
-              <a
-                href="tel:+16043657401"
-                aria-label="Call us"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/12 text-canvas/50 transition-all duration-200 hover:border-champagne/50 hover:text-canvas"
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z" />
-                </svg>
-              </a>
-            </div>
-          </div>
+    <footer className="bg-canvas text-ink">
+      {/* Champagne top rule */}
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-champagne to-transparent opacity-60" />
 
-          {/* Col 2 - Navigation */}
-          <div>
-            <p className="eyebrow text-[0.6rem] text-champagne">Navigate</p>
-            <ul className="mt-5 flex flex-col gap-3">
-              {[
-                { label: 'The Offerings', href: '#offerings' },
-                { label: 'The Gallery', href: '#gallery' },
-                { label: 'Pricing', href: '#pricing' },
-                { label: 'Logistics', href: '#logistics' },
-                { label: 'Contact', href: '#inquire' },
-              ].map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="font-sans text-sm text-canvas/45 transition-colors hover:text-canvas/80"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className="mx-auto max-w-[1440px] px-6 py-20 lg:px-16 xl:px-24">
 
-          {/* Col 3 - Contact */}
-          <div>
-            <p className="eyebrow text-[0.6rem] text-champagne">Get in Touch</p>
-            <ul className="mt-5 flex flex-col gap-3 font-sans text-sm text-canvas/45">
-              <li>
-                <a
-                  href="https://www.instagram.com/lovepreetphotography.ca/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-canvas/80"
-                >
-                  @lovepreetphotography.ca
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+16043657401"
-                  className="transition-colors hover:text-canvas/80"
-                >
-                  +1 604-365-7401
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:hello@lovepreetphotos.ca"
-                  className="transition-colors hover:text-canvas/80"
-                >
-                  hello@lovepreetphotos.ca
-                </a>
-              </li>
-            </ul>
-            <p className="mt-8 font-sans text-xs text-canvas/20">
-              Consultation by private appointment only.
-            </p>
-          </div>
+        {/* Logo centred */}
+        <div className="mb-16 flex justify-center">
+          <a href="#top" aria-label="Lovepreet Photos &amp; Films — home">
+            <img
+              src="/logo.png"
+              alt="Lovepreet Photos &amp; Films"
+              className="h-20 w-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100 lg:h-24"
+            />
+          </a>
         </div>
+
+        {/* 4-column grid */}
+        <div className="relative grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-4 md:gap-x-0">
+
+          {NAV_COLUMNS.map((col, colIdx) => (
+            <div key={col.heading} className="relative">
+              {/* Vertical divider between columns (desktop only) */}
+              {colIdx > 0 && (
+                <div className="absolute -left-px top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-champagne/25 to-transparent md:block" />
+              )}
+
+              <div className="md:px-8">
+                {/* Column heading — italic serif script feel */}
+                <p
+                  className="mb-5 font-display text-base italic text-champagne"
+                  style={{ fontWeight: 400, letterSpacing: '0.01em' }}
+                >
+                  {col.heading}
+                </p>
+
+                <ul className="flex flex-col gap-2.5">
+                  {col.links.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        target={'external' in link && link.external ? '_blank' : undefined}
+                        rel={'external' in link && link.external ? 'noopener noreferrer' : undefined}
+                        className="group relative inline-block font-sans text-[0.8125rem] font-light leading-relaxed tracking-wide text-ink/50 transition-colors duration-300 hover:text-ink"
+                      >
+                        {link.label}
+                        {/* Underline fade-in on hover */}
+                        <span className="absolute bottom-0 left-0 h-px w-0 bg-champagne transition-all duration-300 group-hover:w-full" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Thin champagne rule */}
+        <div className="my-14 h-px w-full bg-gradient-to-r from-transparent via-champagne/30 to-transparent" />
 
         {/* Bottom bar */}
-        <div className="mt-14 flex flex-col gap-3 border-t border-white/6 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-sans text-xs text-canvas/25">
+        <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
+          <p className="font-sans text-xs font-light tracking-widest text-ink/30">
             &copy; 2026 Lovepreet Photos &amp; Films. All rights reserved.
           </p>
-          <p className="font-mono text-[0.6rem] uppercase tracking-[0.25em] text-canvas/15">
-            Langley &middot; Surrey &middot; Vancouver
-          </p>
+
+          {/* Legal links */}
+          <div className="flex items-center gap-6">
+            {LEGAL_LINKS.map((link, i) => (
+              <span key={link.label} className="flex items-center gap-6">
+                {i > 0 && (
+                  <span className="h-3 w-px bg-champagne/30" />
+                )}
+                <a
+                  href={link.href}
+                  className="font-sans text-xs font-light tracking-widest text-ink/30 transition-colors duration-300 hover:text-champagne"
+                >
+                  {link.label}
+                </a>
+              </span>
+            ))}
+          </div>
+
+          {/* Social handle */}
+          <div className="flex items-center gap-3">
+            <span className="h-px w-5 bg-champagne/40" />
+            <a
+              href="https://www.instagram.com/lovepreetphotography.ca/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[0.6rem] uppercase tracking-[0.25em] text-ink/30 transition-colors duration-300 hover:text-champagne"
+            >
+              @lovepreetphotography.ca
+            </a>
+            <span className="h-px w-5 bg-champagne/40" />
+          </div>
         </div>
+
+        {/* Consultation note */}
+        <p className="mt-8 text-center font-display text-xs italic text-ink/20">
+          Consultation by private appointment only &mdash; Langley &middot; Surrey &middot; Vancouver
+        </p>
       </div>
     </footer>
   )
