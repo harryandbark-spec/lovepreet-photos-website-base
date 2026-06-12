@@ -39,7 +39,7 @@ export function DualMedium() {
               className="absolute left-0 top-0 w-[85%] h-[80%] rounded-[40px] overflow-hidden shadow-2xl"
             >
               <Image
-                src="https://images.unsplash.com/photo-1617854818583-09e7f077a156?w=1000&q=85&fit=crop"
+                src="/placeholder.svg?height=800&width=1000"
                 alt="Editorial fine-art still"
                 fill
                 className="object-cover transition-transform duration-[20s] hover:scale-105"
@@ -56,7 +56,7 @@ export function DualMedium() {
               className="absolute right-0 bottom-0 w-[55%] h-[45%] rounded-[30px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.3)] z-10 border-4 border-linen"
             >
               <Image
-                src="https://images.unsplash.com/photo-1610173827869-f8a1a17c65f3?w=800&q=85&fit=crop"
+                src="/placeholder.svg?height=450&width=800"
                 alt="Cinematic film still"
                 fill
                 className="object-cover transition-transform duration-[15s] hover:scale-105"

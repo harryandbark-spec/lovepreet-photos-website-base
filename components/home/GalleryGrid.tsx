@@ -6,42 +6,42 @@ const FRAMES = [
   {
     title: 'The Vibrant Sangeet & Maiyan Rituals',
     location: 'Surrey, BC',
-    img: 'https://images.unsplash.com/photo-1583089892943-e02e5b017b6a?w=900&q=85&fit=crop',
+    img: '/placeholder.svg?height=600&width=450',
     span: 'row-span-2',
     aspect: 'h-full min-h-[420px]',
   },
   {
     title: 'The Sacred Anand Karaj',
     location: 'Langley, BC',
-    img: 'https://images.unsplash.com/photo-1588392382834-a891154bca4d?w=900&q=85&fit=crop',
+    img: '/placeholder.svg?height=400&width=400',
     span: '',
     aspect: 'h-full min-h-[200px]',
   },
   {
     title: 'Intimate Editorial Portraits',
     location: 'Lower Mainland, BC',
-    img: 'https://images.unsplash.com/photo-1610173827869-f8a1a17c65f3?w=900&q=85&fit=crop',
+    img: '/placeholder.svg?height=400&width=400',
     span: '',
     aspect: 'h-full min-h-[200px]',
   },
   {
     title: 'The Grand Reception',
     location: 'Vancouver, BC',
-    img: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=900&q=85&fit=crop',
+    img: '/placeholder.svg?height=600&width=450',
     span: 'row-span-2',
     aspect: 'h-full min-h-[420px]',
   },
   {
     title: 'The Baraat Procession',
     location: 'Surrey, BC',
-    img: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=900&q=85&fit=crop',
+    img: '/placeholder.svg?height=400&width=400',
     span: '',
     aspect: 'h-full min-h-[200px]',
   },
   {
     title: 'Mehndi & Getting Ready',
     location: 'Langley, BC',
-    img: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&q=85&fit=crop',
+    img: '/placeholder.svg?height=400&width=400',
     span: '',
     aspect: 'h-full min-h-[200px]',
   },
@@ -137,13 +137,17 @@ function GalleryFrame({
       data-delay={delay}
       style={{ opacity: 0 }}
     >
-      {/* Photo */}
-      <img
-        src={frame.img}
-        alt={frame.title}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.07]"
-        loading="lazy"
-      />
+      {/* Photo or placeholder */}
+      {frame.img ? (
+        <img
+          src={frame.img}
+          alt={frame.title}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.07]"
+          loading="lazy"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-ink/8" />
+      )}
 
       {/* Permanent bottom gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent transition-opacity duration-500 group-hover:opacity-0" />

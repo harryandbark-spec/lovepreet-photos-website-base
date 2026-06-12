@@ -36,7 +36,7 @@ export function VideoReel() {
           >
             {/* Poster image overlay */}
             <img
-              src="https://images.unsplash.com/photo-1583089892943-e02e5b017b6a?w=1260&q=85&fit=crop"
+              src="/placeholder.svg?height=720&width=1260"
               alt="Wedding showreel preview"
               className="absolute inset-0 h-full w-full object-cover opacity-30 transition-opacity duration-500 group-hover:opacity-40"
               loading="lazy"

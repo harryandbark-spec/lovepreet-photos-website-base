@@ -98,8 +98,8 @@ export function Hero() {
           className="relative mt-10 w-full lg:mt-0 lg:w-[45%] xl:w-[50%] h-[60vh] lg:h-[85vh] rounded-t-[100px] lg:rounded-t-none lg:rounded-l-[150px] overflow-hidden shadow-2xl"
         >
           <Image
-            src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=85&fit=crop"
-            alt="Luxury South Asian Wedding Couple"
+            src="/images/hero-couple.png"
+            alt="Punjabi wedding couple walking through a tree-lined path"
             fill
             priority
             className="object-cover object-top transition-transform duration-[20s] ease-out hover:scale-110"
