@@ -98,11 +98,11 @@ export function Hero() {
           className="relative mt-10 w-full lg:mt-0 lg:w-[45%] xl:w-[50%] h-[60vh] lg:h-[85vh] rounded-t-[100px] lg:rounded-t-none lg:rounded-l-[150px] overflow-hidden shadow-2xl"
         >
           <Image
-            src="https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            src="/hero-couple.jpg"
             alt="Luxury South Asian Wedding Couple"
             fill
             priority
-            className="object-cover object-center transition-transform duration-[20s] ease-out hover:scale-110"
+            className="object-cover object-top transition-transform duration-[20s] ease-out hover:scale-110"
           />
           {/* Soft inner shadow for depth */}
           <div className="absolute inset-0 rounded-t-[100px] lg:rounded-t-none lg:rounded-l-[150px] shadow-[inset_0_0_60px_rgba(0,0,0,0.1)] pointer-events-none" />

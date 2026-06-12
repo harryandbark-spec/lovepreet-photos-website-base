@@ -4,7 +4,7 @@ const PHASES = [
     phase: 'Getting Ready',
     title: 'Quiet Before the Crescendo',
     body: 'The early morning light. The bridesmaids adjusting a dupatta. The groom\'s hands trembling slightly as his father ties his turban. These unguarded moments before the ceremony are where the most honest emotions live — and we never miss them.',
-    img: 'https://images.pexels.com/photos/1024985/pexels-photo-1024985.jpeg?auto=compress&cs=tinysrgb&w=900',
+    img: 'https://images.unsplash.com/photo-1617854818583-09e7f077a156?w=900&q=85&fit=crop',
     align: 'left',
   },
   {
@@ -12,7 +12,7 @@ const PHASES = [
     phase: 'The Ceremony',
     title: 'Sacred Stillness, Moving Story',
     body: 'Whether it\'s the Lavaan circling the Guru Granth Sahib Ji, the exchange of garlands, or the first moment a couple\'s eyes meet at the altar — we capture the ceremony\'s spiritual weight without disturbing it.',
-    img: 'https://images.pexels.com/photos/3014856/pexels-photo-3014856.jpeg?auto=compress&cs=tinysrgb&w=900',
+    img: 'https://images.unsplash.com/photo-1588392382834-a891154bca4d?w=900&q=85&fit=crop&crop=center',
     align: 'right',
   },
   {
@@ -20,7 +20,7 @@ const PHASES = [
     phase: 'First Dance',
     title: 'The World Narrows to Two',
     body: 'A first dance is not a performance — it\'s the first moment of true privacy in a day surrounded by hundreds. We frame it accordingly, wide enough to feel the room, intimate enough to feel the moment.',
-    img: 'https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=900',
+    img: 'https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?w=900&q=85&fit=crop',
     align: 'left',
   },
   {
@@ -28,7 +28,7 @@ const PHASES = [
     phase: 'The Reception',
     title: 'Pure, Uninhibited Joy',
     body: 'The speeches that reduce a room to tears. The moment the dhol begins and every generation joins the dance floor. The reception is where culture and celebration collide — and we document every glorious second of it.',
-    img: 'https://images.pexels.com/photos/1730877/pexels-photo-1730877.jpeg?auto=compress&cs=tinysrgb&w=900',
+    img: 'https://images.unsplash.com/photo-1583089892943-e02e5b017b6a?w=900&q=85&fit=crop&crop=right',
     align: 'right',
   },
 ]

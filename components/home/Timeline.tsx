@@ -30,7 +30,7 @@ export function Timeline() {
   })
 
   // Subtle parallax for the sticky image
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1])
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.05, 1.1])
 
   return (
     <section id="experience" className="bg-linen py-24 lg:py-32" ref={containerRef}>
@@ -55,15 +55,15 @@ export function Timeline() {
           
           {/* Left: Sticky Image */}
           <div className="w-full lg:w-1/2">
-            <div className="sticky top-32 h-[500px] lg:h-[700px] w-full rounded-[40px] overflow-hidden shadow-2xl">
+            <div className="lg:sticky top-32 h-[500px] lg:h-[700px] w-full rounded-[40px] overflow-hidden shadow-2xl">
               <motion.div style={{ scale }} className="w-full h-full">
                 <Image
-                  src="https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=1000"
+                  src="https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?w=1000&q=85&fit=crop"
                   alt="Couple walking"
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-ink/5 mix-blend-overlay" />
+                <div className="absolute inset-0 bg-ink/10 backdrop-blur-sm mix-blend-overlay" />
               </motion.div>
             </div>
           </div>

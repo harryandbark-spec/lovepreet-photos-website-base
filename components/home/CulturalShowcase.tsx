@@ -11,7 +11,7 @@ const CEREMONIES = [
     title: 'The Night of Celebration',
     body: 'A vibrant evening of dance, music, and family storytelling. We capture the raw joy — the aunties breaking into dance, the groomsmen group choreography, and the candlelit moments between families meeting for the first time.',
     detail: 'Evening lighting · Multiple cameras · Candid + editorial',
-    img: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    img: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1200&q=85&fit=crop',
   },
   {
     id: 'baraat',
@@ -19,7 +19,7 @@ const CEREMONIES = [
     title: 'The Grand Procession',
     body: 'The Baraat is pure cinematic energy — the dhol, the dancing, the arrival of the groom and his family. We position our crew across the procession route to capture every angle of this moving celebration.',
     detail: 'Outdoor · Drone-ready · High energy documentary',
-    img: 'https://images.pexels.com/photos/1729931/pexels-photo-1729931.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    img: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&q=85&fit=crop',
   },
   {
     id: 'anand-karaj',
@@ -27,7 +27,7 @@ const CEREMONIES = [
     title: 'The Sacred Ceremony',
     body: 'The Anand Karaj is the spiritual heart of a Sikh wedding — the four Lavaan circling the Guru Granth Sahib Ji. We approach this ceremony with the deepest reverence, capturing its profound meaning with stillness and care.',
     detail: 'Gurdwara lighting · Respectful positioning · Emotional focus',
-    img: 'https://images.pexels.com/photos/3014853/pexels-photo-3014853.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    img: 'https://images.unsplash.com/photo-1588392382834-a891154bca4d?w=1200&q=85&fit=crop',
   },
   {
     id: 'mehndi',
@@ -35,7 +35,7 @@ const CEREMONIES = [
     title: 'The Art of Adornment',
     body: 'Intimate, warm, and full of quiet beauty. The Mehndi ceremony is where we find the details — the intricate henna patterns, the jewellery, the whispered excitement between the bride and her sisters.',
     detail: 'Detail macro photography · Natural light · Intimate documentary',
-    img: 'https://images.pexels.com/photos/1128783/pexels-photo-1128783.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    img: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=85&fit=crop',
   },
 ]
 
@@ -95,10 +95,10 @@ export function CulturalShowcase() {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative lg:absolute lg:left-0 lg:top-1/2 lg:-translate-y-1/2 w-full lg:w-[45%] mt-[-50px] lg:mt-0 z-10"
+            transition={{ type: "spring", stiffness: 120, delay: 0.2 }}
+            className="relative lg:absolute lg:left-0 lg:top-1/2 lg:-translate-y-1/2 w-full lg:w-[45%] mt-[-50px] lg:mt-0 z-10 -ml-0 lg:-ml-20"
           >
-            <div className="bg-white/85 backdrop-blur-2xl border border-ink/5 rounded-[30px] p-8 lg:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
+            <div className="bg-white/90 text-ink backdrop-blur-2xl border border-white/20 rounded-[30px] p-8 lg:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
               
               {/* Tabs */}
               <div className="flex gap-6 overflow-x-auto border-b border-ink/10 pb-6 mb-8 no-scrollbar">

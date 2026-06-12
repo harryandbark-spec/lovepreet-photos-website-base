@@ -17,7 +17,7 @@ export function DualMedium() {
           className="flex flex-col items-center"
         >
           <span className="eyebrow text-[0.65rem] text-champagne">What We Create</span>
-          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish">
+          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish tracking-wider">
             The Dual Medium Advantage
           </h2>
           <p className="mt-6 max-w-xl text-center font-sans text-base leading-relaxed text-ink/60 text-balance">
@@ -39,10 +39,10 @@ export function DualMedium() {
               className="absolute left-0 top-0 w-[85%] h-[80%] rounded-[40px] overflow-hidden shadow-2xl"
             >
               <Image
-                src="https://images.pexels.com/photos/1128783/pexels-photo-1128783.jpeg?auto=compress&cs=tinysrgb&w=1000"
+                src="https://images.unsplash.com/photo-1617854818583-09e7f077a156?w=1000&q=85&fit=crop"
                 alt="Editorial fine-art still"
                 fill
-                className="object-cover transition-transform duration-[20s] hover:scale-110"
+                className="object-cover transition-transform duration-[20s] hover:scale-105"
               />
               <div className="absolute inset-0 bg-ink/10 mix-blend-overlay pointer-events-none" />
             </motion.div>
@@ -56,7 +56,7 @@ export function DualMedium() {
               className="absolute right-0 bottom-0 w-[55%] h-[45%] rounded-[30px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.3)] z-10 border-4 border-linen"
             >
               <Image
-                src="https://images.pexels.com/photos/3014853/pexels-photo-3014853.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="https://images.unsplash.com/photo-1610173827869-f8a1a17c65f3?w=800&q=85&fit=crop"
                 alt="Cinematic film still"
                 fill
                 className="object-cover transition-transform duration-[15s] hover:scale-105"
@@ -73,7 +73,7 @@ export function DualMedium() {
           </div>
 
           {/* Floating Text Container */}
-          <div className="flex w-full lg:w-[40%] flex-col justify-center gap-16 lg:pt-20 lg:pl-10">
+          <div className="flex w-full lg:w-[40%] flex-col justify-center gap-16 lg:pt-20 lg:pl-10 bg-ink/30 backdrop-blur-lg rounded-xl p-6">
             
             {/* Stills Text */}
             <motion.div 
