@@ -1,6 +1,8 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Cormorant_Garamond, Montserrat, DM_Sans } from 'next/font/google'
+import { Nav } from '@/components/layout/Nav'
+import { Footer } from '@/components/layout/Footer'
 import './globals.css'
 
 const cormorant = Cormorant_Garamond({
@@ -72,7 +74,9 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-canvas text-ink antialiased">
+        <Nav />
         {children}
+        <Footer />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

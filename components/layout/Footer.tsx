@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 const NAV_COLUMNS = [
   {
     heading: 'Services',
@@ -55,14 +57,15 @@ export function Footer() {
 
       <div className="mx-auto max-w-[1440px] px-6 py-20 lg:px-16 xl:px-24">
 
-        {/* Logo centred */}
+        {/* Typographic Logo centred */}
         <div className="mb-16 flex justify-center">
-          <a href="#top" aria-label="Lovepreet Photos &amp; Films — home">
-            <img
-              src="/logo.png"
-              alt="Lovepreet Photos &amp; Films"
-              className="h-20 w-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100 lg:h-24"
-            />
+          <a href="#top" aria-label="Lovepreet Photos & Films — home" className="group flex flex-col items-center">
+            <span className="font-display text-4xl italic tracking-wide text-ink transition-colors duration-500 group-hover:text-champagne md:text-5xl lg:text-6xl">
+              Lovepreet
+            </span>
+            <span className="mt-3 font-mono text-[0.65rem] uppercase tracking-[0.5em] text-ink/40 transition-colors duration-500 group-hover:text-ink/60">
+              Photos & Films
+            </span>
           </a>
         </div>
 

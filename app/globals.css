@@ -17,10 +17,15 @@
 
 :root {
   /* Fine-Art Luxury Palette */
-  --canvas: #ffffff;
-  --ink: #1a1a1a;
-  --linen: #f7f5f2;
-  --champagne: #c5a882;
+  --canvas: #FCFBFA; /* Soft Alabaster White */
+  --ink: #1F1D1A;    /* Warm Charcoal */
+  --linen: #F3EFEA;  /* Creamy Oat */
+  --champagne: #C6A87C; /* Muted Gold/Bronze */
+
+  /* Accent Color – Deep Teal */
+  --accent-primary: #3A8E9F;
+  --accent-primary-light: #73B6C9; /* lighter tint */
+  --accent-primary-dark: #1F5F73;  /* darker shade */
 }
 
 @layer base {
@@ -103,10 +108,11 @@
     background: linear-gradient(
       90deg,
       transparent,
-      var(--champagne),
+      var(--accent-primary),
       transparent
     );
   }
+/* duplicate heading-flourish removed */
 }
 
 /* ─── Keyframes ─────────────────────────────────────── */

@@ -1,6 +1,6 @@
 'use client';
 
-export default function CTABanner() {
+export function CTABanner() {
   return (
     <section className="w-full bg-canvas py-16 md:py-24 lg:py-32">
       {/* Top champagne divider */}
