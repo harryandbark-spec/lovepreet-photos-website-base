@@ -98,7 +98,7 @@ export function Hero() {
           className="relative mt-10 w-full lg:mt-0 lg:w-[45%] xl:w-[50%] h-[60vh] lg:h-[85vh] rounded-t-[100px] lg:rounded-t-none lg:rounded-l-[150px] overflow-hidden shadow-2xl"
         >
           <Image
-            src="/hero-couple.jpg"
+            src="/images/hero-couple.png"
             alt="Luxury South Asian Wedding Couple"
             fill
             priority
