@@ -4,14 +4,15 @@ export function VideoReel() {
   const [modalOpen, setModalOpen] = useState(false)
 
   return (
-    <section className="py-20 lg:py-28" style={{ backgroundColor: 'var(--canvas)' }}>
-      <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
+    <section className="relative py-24 lg:py-32" style={{ backgroundColor: 'var(--ink)', color: 'var(--canvas)' }}>
+      <div className="pointer-events-none absolute inset-0 opacity-30" style={{ background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.4) 100%)' }} />
+      <div className="mx-auto max-w-[1440px] px-6 lg:px-10 relative z-10">
         <div className="flex flex-col items-center">
           <span className="eyebrow text-[0.65rem] text-champagne">Cinematic Film</span>
-          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl">
+          <h2 className="mt-4 text-center font-display text-4xl italic text-canvas lg:text-5xl" style={{ fontWeight: 500 }}>
             The 2025 Wedding Showreel
           </h2>
-          <p className="mt-5 max-w-xl text-center font-sans text-base leading-relaxed" style={{ color: 'rgba(31,29,26,0.6)' }}>
+          <p className="mt-5 max-w-xl text-center font-sans text-base leading-relaxed" style={{ color: 'rgba(252,251,250,0.55)' }}>
             90 seconds. Four weddings. One creative vision. See how every
             celebration becomes a film that earns its place on a cinema screen.
           </p>
@@ -36,9 +37,10 @@ export function VideoReel() {
               loading="lazy"
             />
 
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.4), transparent)' }} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent 60%)' }} />
 
             <div className="relative z-10 flex flex-col items-center gap-6 transition-transform duration-300 group-hover:scale-105">
+              <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: 'inset 0 0 120px rgba(0,0,0,0.5)' }} />
               <div
                 className="flex h-20 w-20 items-center justify-center rounded-full lg:h-24 lg:w-24"
                 style={{
@@ -67,16 +69,16 @@ export function VideoReel() {
           </div>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-px border lg:grid-cols-4" style={{ borderColor: 'rgba(31,29,26,0.08)', backgroundColor: 'rgba(31,29,26,0.08)' }}>
+        <div className="mt-10 grid grid-cols-2 gap-px border lg:grid-cols-4" style={{ borderColor: 'rgba(255,255,255,0.1)', backgroundColor: 'rgba(255,255,255,0.08)' }}>
           {[
             { value: '200+', label: 'Weddings Documented' },
             { value: '4-Day', label: 'Multi-Day Capability' },
             { value: '8-12 Wk', label: 'Delivery Window' },
             { value: '1 Crew', label: 'Unified Direction' },
           ].map((stat) => (
-            <div key={stat.label} className="flex flex-col items-center px-6 py-8" style={{ backgroundColor: 'var(--canvas)' }}>
-              <span className="font-display text-3xl italic text-ink">{stat.value}</span>
-              <span className="eyebrow mt-2 text-[0.6rem]" style={{ color: 'rgba(31,29,26,0.4)' }}>{stat.label}</span>
+            <div key={stat.label} className="flex flex-col items-center px-6 py-8" style={{ backgroundColor: 'rgba(255,255,255,0.04)' }}>
+              <span className="font-display text-3xl italic text-canvas">{stat.value}</span>
+              <span className="eyebrow mt-2 text-[0.6rem]" style={{ color: 'rgba(255,255,255,0.3)' }}>{stat.label}</span>
             </div>
           ))}
         </div>
@@ -99,7 +101,7 @@ export function VideoReel() {
           </button>
           <div
             className="relative flex aspect-video w-full max-w-5xl items-center justify-center overflow-hidden"
-            style={{ background: 'radial-gradient(ellipse at center, #1a2d4a 0%, #050c18 100%)' }}
+            style={{ background: 'radial-gradient(ellipse at center, #2a1d2a 0%, #0a0a0a 100%)' }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="text-center">

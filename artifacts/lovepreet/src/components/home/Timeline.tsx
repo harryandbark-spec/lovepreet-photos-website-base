@@ -39,14 +39,14 @@ export function Timeline() {
           className="flex flex-col items-center"
         >
           <span className="eyebrow text-[0.65rem] text-champagne">The Process</span>
-          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish">
+          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish" style={{ fontWeight: 500 }}>
             The Cohesive Journey
           </h2>
         </motion.div>
 
         <div className="mt-20 lg:mt-32 flex flex-col lg:flex-row gap-16 lg:gap-24">
           <div className="w-full lg:w-1/2">
-            <div className="lg:sticky top-32 h-[500px] lg:h-[700px] w-full rounded-[40px] overflow-hidden shadow-2xl">
+            <div className="lg:sticky top-32 h-[500px] lg:h-[700px] w-full rounded-[40px] overflow-hidden shadow-2xl film-grain warm-tint">
               <motion.div style={{ scale }} className="w-full h-full">
                 <img
                   src="https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?w=1000&q=85&fit=crop"
@@ -79,7 +79,7 @@ export function Timeline() {
                     {phase.number}
                   </span>
 
-                  <h3 className="mt-6 font-display text-3xl lg:text-4xl text-ink">
+                  <h3 className="mt-6 font-display text-3xl lg:text-4xl text-ink" style={{ fontWeight: 500 }}>
                     {phase.title}
                   </h3>
 

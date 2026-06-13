@@ -7,10 +7,9 @@ export function CTABanner() {
 
       <div className="mx-auto max-w-3xl px-4 text-center md:px-8">
         <div className="mb-4 flex flex-col items-center gap-2">
-          <h2 className="font-display text-4xl italic text-ink md:text-5xl lg:text-6xl">
+          <h2 className="font-display text-4xl italic text-ink md:text-5xl lg:text-6xl" style={{ fontWeight: 500 }}>
             Ready to Capture
-          </h2>
-          <h2 className="font-display text-4xl italic text-ink md:text-5xl lg:text-6xl">
+            <br />
             Your Story?
           </h2>
           <div className="mt-3 flex items-center gap-3">
@@ -23,13 +22,13 @@ export function CTABanner() {
           </div>
         </div>
 
-        <p className="mb-10 font-sans text-base font-light tracking-wide md:text-lg" style={{ color: 'rgba(31,29,26,0.7)' }}>
+        <p className="mb-10 font-sans text-base font-light tracking-wide md:text-lg" style={{ color: 'rgba(31,29,26,0.65)' }}>
           Let&apos;s discuss your vision and find the perfect photography package for your special day.
         </p>
 
         <a
           href="#inquire"
-          className="group inline-flex items-center gap-2 rounded-full border px-8 py-3.5 font-sans text-sm font-light uppercase tracking-[0.15em] text-ink transition-all duration-300 hover:text-canvas"
+          className="magnetic-hover group inline-flex items-center gap-2 rounded-full border px-8 py-3.5 font-sans text-sm font-light uppercase tracking-[0.15em] text-ink transition-all duration-300 hover:text-canvas"
           style={{ borderColor: 'var(--champagne)' }}
           onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'var(--champagne)')}
           onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}

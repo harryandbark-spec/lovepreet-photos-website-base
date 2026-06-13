@@ -1,8 +1,17 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 export function Hero() {
+  const ref = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '-8%'])
+
   return (
     <section
+      ref={ref}
       id="top"
       className="relative flex min-h-screen flex-col overflow-hidden pt-28 lg:pt-0"
       style={{ backgroundColor: 'var(--linen)' }}
@@ -37,9 +46,10 @@ export function Hero() {
               style={{
                 color: 'var(--ink)',
                 fontSize: 'clamp(3.5rem,7vw,7rem)',
-                fontWeight: 400,
+                fontWeight: 500,
                 letterSpacing: '-0.02em',
               }}
+              aria-label="One Vision. Two Mediums. Captured as One."
             >
               One Vision.
               <br />
@@ -49,10 +59,10 @@ export function Hero() {
             </h1>
 
             <div className="mt-8 flex items-center gap-3">
-              <div className="h-px w-12" style={{ backgroundColor: 'rgba(198,168,124,0.6)' }} />
+              <div className="h-px w-12" style={{ backgroundColor: 'rgba(184,150,95,0.6)' }} />
               <div
                 className="h-px flex-1 max-w-[160px]"
-                style={{ background: 'linear-gradient(to right, rgba(198,168,124,0.6), transparent)' }}
+                style={{ background: 'linear-gradient(to right, rgba(184,150,95,0.6), transparent)' }}
               />
             </div>
           </motion.div>
@@ -77,14 +87,14 @@ export function Hero() {
           >
             <a
               href="#inquire"
-              className="group relative overflow-hidden rounded-full px-10 py-4 font-sans text-[0.8rem] font-medium tracking-wide transition-all duration-500 hover:-translate-y-1"
+              className="magnetic-hover group relative overflow-hidden rounded-full px-10 py-4 font-sans text-[0.8rem] font-medium tracking-wide transition-all duration-500 hover:-translate-y-1"
               style={{
-                backgroundColor: 'var(--accent-primary)',
+                backgroundColor: 'var(--accent-secondary)',
                 color: 'var(--canvas)',
-                boxShadow: '0 0 0 rgba(58,142,159,0)',
+                boxShadow: '0 0 0 rgba(166,103,116,0)',
               }}
-              onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 12px 40px rgba(58,142,159,0.3)')}
-              onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 0 rgba(58,142,159,0)')}
+              onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 12px 40px rgba(166,103,116,0.3)')}
+              onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 0 rgba(166,103,116,0)')}
             >
               <span className="relative z-10">Start the Conversation</span>
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-in-out group-hover:translate-x-full" />
@@ -116,9 +126,10 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="relative mt-10 w-full lg:mt-0 lg:w-[45%] xl:w-[50%] h-[60vh] lg:h-[85vh] rounded-t-[100px] lg:rounded-t-none lg:rounded-l-[150px] overflow-hidden shadow-2xl"
+          className="relative mt-10 w-full lg:mt-0 lg:w-[45%] xl:w-[50%] h-[60vh] lg:h-[85vh] rounded-t-[100px] lg:rounded-t-none lg:rounded-l-[150px] overflow-hidden shadow-2xl film-grain warm-tint"
         >
-          <img
+          <motion.img
+            style={{ y }}
             src="/hero-couple.jpg"
             alt="Luxury South Asian Wedding Couple"
             className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-[20s] ease-out hover:scale-110"

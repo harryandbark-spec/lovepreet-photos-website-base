@@ -3,7 +3,7 @@ export default function Make() {
     <section className="py-20 lg:py-28" style={{ backgroundColor: 'var(--canvas)' }}>
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
         <div className="mb-12 text-center">
-          <h1 className="font-display text-4xl italic text-ink lg:text-5xl">
+          <h1 className="font-display text-4xl italic text-ink lg:text-5xl" style={{ fontWeight: 500 }}>
             Our Story
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-base" style={{ color: 'rgba(31,29,26,0.7)' }}>
@@ -12,7 +12,7 @@ export default function Make() {
         </div>
 
         <div className="mb-12">
-          <h2 className="font-display text-3xl italic" style={{ color: 'rgba(31,29,26,0.9)' }}>
+          <h2 className="font-display text-3xl italic" style={{ color: 'rgba(31,29,26,0.9)', fontWeight: 500 }}>
             The Craft
           </h2>
           <p className="mt-4 max-w-2xl text-base" style={{ color: 'rgba(31,29,26,0.7)' }}>
@@ -21,7 +21,7 @@ export default function Make() {
         </div>
 
         <div className="mb-12">
-          <h2 className="font-display text-3xl italic" style={{ color: 'rgba(31,29,26,0.9)' }}>
+          <h2 className="font-display text-3xl italic" style={{ color: 'rgba(31,29,26,0.9)', fontWeight: 500 }}>
             South Asian Weddings
           </h2>
           <p className="mt-4 max-w-2xl text-base" style={{ color: 'rgba(31,29,26,0.7)' }}>
@@ -36,7 +36,7 @@ export default function Make() {
         </div>
 
         <div className="mt-16 flex justify-center">
-          <div className="relative w-48 h-48 rounded-full overflow-hidden" style={{ outline: '4px solid rgba(58,142,159,0.3)' }}>
+          <div className="relative w-48 h-48 rounded-full overflow-hidden" style={{ outline: '4px solid rgba(166,103,116,0.3)' }}>
             <img
               src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1260"
               alt="Lovepreet portrait"

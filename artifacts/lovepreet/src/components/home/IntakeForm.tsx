@@ -55,7 +55,7 @@ export function IntakeForm() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="flex flex-col">
             <span className="eyebrow text-[0.65rem] text-champagne">Private Inquiry</span>
-            <h2 className="mt-4 font-display text-4xl italic text-ink lg:text-5xl">
+            <h2 className="mt-4 font-display text-4xl italic text-ink lg:text-5xl" style={{ fontWeight: 500 }}>
               Secure Your Timeline.
             </h2>
             <p className="mt-6 max-w-md font-sans text-base leading-relaxed" style={{ color: 'rgba(31,29,26,0.65)' }}>

@@ -63,7 +63,7 @@ export function GalleryGrid() {
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
         <div className="flex flex-col items-center gallery-reveal" data-delay="0ms" style={{ opacity: 0 }}>
           <span className="eyebrow text-[0.65rem] text-champagne">Portfolio</span>
-          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish">
+          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish" style={{ fontWeight: 500 }}>
             The Documented Chapters
           </h2>
           <p className="mt-8 max-w-xl text-center font-sans text-base leading-relaxed" style={{ color: 'rgba(31,29,26,0.6)' }}>
@@ -113,7 +113,7 @@ function GalleryFrame({
 }) {
   return (
     <figure
-      className={`gallery-reveal group relative overflow-hidden cursor-pointer ${className}`}
+      className={`gallery-reveal group relative overflow-hidden cursor-pointer film-grain warm-tint ${className}`}
       aria-label={`${frame.title} — ${frame.location}`}
       data-delay={delay}
       style={{ opacity: 0, backgroundColor: 'var(--linen)' }}

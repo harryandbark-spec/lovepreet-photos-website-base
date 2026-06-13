@@ -55,12 +55,12 @@ export function Nav() {
               key={link.href}
               href={link.href}
               className="group relative font-display text-xl italic transition-colors duration-300"
-              style={{ color: 'var(--accent-primary)' }}
+              style={{ color: 'var(--accent-secondary)' }}
             >
               {link.label}
               <span
                 className="absolute -bottom-1 left-0 h-px w-0 transition-all duration-500 group-hover:w-full"
-                style={{ backgroundColor: 'var(--accent-primary)' }}
+                style={{ backgroundColor: 'var(--accent-secondary)' }}
               />
             </a>
           ))}
@@ -70,10 +70,10 @@ export function Nav() {
           href="#inquire"
           className="hidden rounded-full px-6 py-2 font-display text-xl italic transition-all duration-300 hover:-translate-y-1 lg:inline-block"
           style={{
-            backgroundColor: 'var(--accent-primary)',
+            backgroundColor: 'var(--accent-secondary)',
             color: 'var(--canvas)',
           }}
-          onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 10px 30px rgba(58,142,159,0.3)')}
+          onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 10px 30px rgba(166,103,116,0.35)')}
           onMouseLeave={e => (e.currentTarget.style.boxShadow = '')}
         >
           Check Availability
@@ -93,9 +93,9 @@ export function Nav() {
             onClick={() => setOpen(true)}
             className="flex h-8 w-8 flex-col items-center justify-center gap-[5px]"
           >
-            <span className="h-px w-5" style={{ backgroundColor: 'rgba(58,142,159,0.7)' }} />
-            <span className="h-px w-5" style={{ backgroundColor: 'rgba(58,142,159,0.7)' }} />
-            <span className="h-px w-3 self-start" style={{ backgroundColor: 'rgba(58,142,159,0.7)' }} />
+            <span className="h-px w-5" style={{ backgroundColor: 'var(--accent-secondary)' }} />
+            <span className="h-px w-5" style={{ backgroundColor: 'var(--accent-secondary)' }} />
+            <span className="h-px w-3 self-start" style={{ backgroundColor: 'var(--accent-secondary)' }} />
           </button>
         </div>
       </div>

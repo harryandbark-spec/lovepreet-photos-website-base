@@ -54,13 +54,13 @@ export function Footer() {
         <div className="mb-16 flex justify-center">
           <a href="#top" aria-label="Lovepreet Photos & Films — home" className="group flex flex-col items-center">
             <span
-              className="font-display text-4xl italic tracking-wide transition-colors duration-500 group-hover:text-champagne md:text-5xl lg:text-6xl"
-              style={{ color: 'var(--ink)' }}
+              className="font-display text-5xl italic tracking-wide transition-colors duration-500 group-hover:text-champagne md:text-6xl lg:text-7xl"
+              style={{ color: 'var(--ink)', fontWeight: 500 }}
             >
               Lovepreet
             </span>
             <span
-              className="mt-3 eyebrow text-[0.65rem] tracking-[0.5em] transition-colors duration-500 group-hover:text-ink/60"
+              className="mt-4 eyebrow text-[0.65rem] tracking-[0.5em] transition-colors duration-500 group-hover:text-ink/60"
               style={{ color: 'rgba(31,29,26,0.4)' }}
             >
               Photos &amp; Films

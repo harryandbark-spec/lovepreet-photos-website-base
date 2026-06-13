@@ -51,7 +51,7 @@ export function CulturalShowcase() {
           className="flex flex-col items-center"
         >
           <span className="eyebrow text-[0.65rem] text-champagne">South Asian Weddings</span>
-          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish">
+          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish" style={{ fontWeight: 500 }}>
             Every Ritual. Fully Honoured.
           </h2>
           <p className="mt-6 max-w-2xl text-center font-sans text-base leading-relaxed text-balance" style={{ color: 'rgba(31,29,26,0.6)' }}>
@@ -130,7 +130,7 @@ export function CulturalShowcase() {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <h3 className="font-display text-3xl italic text-ink lg:text-4xl">
+                  <h3 className="font-display text-3xl italic text-ink lg:text-4xl" style={{ fontWeight: 500 }}>
                     {ceremony.title}
                   </h3>
                   <div className="mt-5 flex items-center gap-3">

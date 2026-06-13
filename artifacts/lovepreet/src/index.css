@@ -11,6 +11,7 @@
   --color-linen: var(--linen);
   --color-champagne: var(--champagne);
   --color-accent: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
 
   --color-background: var(--canvas);
   --color-foreground: var(--ink);
@@ -20,11 +21,14 @@
   --canvas: #FCFBFA;
   --ink: #1F1D1A;
   --linen: #F3EFEA;
-  --champagne: #C6A87C;
+  --champagne: #B8965F;
 
-  --accent-primary: #3A8E9F;
-  --accent-primary-light: #73B6C9;
-  --accent-primary-dark: #1F5F73;
+  --accent-primary: #2C6B6E;
+  --accent-primary-light: #4A8F8F;
+  --accent-primary-dark: #1A4A4D;
+  --accent-secondary: #A66774;
+  --accent-secondary-light: #C48B95;
+  --accent-secondary-dark: #7D4A55;
 }
 
 @layer base {
@@ -92,6 +96,14 @@
     width: 80px;
   }
 
+  .magnetic-hover {
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .magnetic-hover:hover {
+    transform: translateY(-3px) scale(1.02);
+  }
+
   .heading-flourish {
     position: relative;
     padding-bottom: 20px;
@@ -108,9 +120,44 @@
     background: linear-gradient(
       90deg,
       transparent,
-      var(--accent-primary),
+      var(--accent-secondary),
       transparent
     );
+  }
+
+  .film-grain {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .film-grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    z-index: 10;
+  }
+
+  .warm-tint {
+    position: relative;
+  }
+
+  .warm-tint::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    background: linear-gradient(
+      135deg,
+      rgba(184, 150, 95, 0.08) 0%,
+      transparent 50%,
+      rgba(166, 103, 116, 0.05) 100%
+    );
+    mix-blend-mode: multiply;
   }
 }
 

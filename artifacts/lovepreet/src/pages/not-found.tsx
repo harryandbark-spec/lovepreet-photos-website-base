@@ -14,7 +14,7 @@ export default function NotFound() {
       <Link
         href="/"
         className="mt-8 rounded-full px-8 py-3 font-sans text-sm transition-all duration-300 hover:-translate-y-0.5"
-        style={{ backgroundColor: 'var(--accent-primary)', color: 'var(--canvas)' }}
+        style={{ backgroundColor: 'var(--accent-secondary)', color: 'var(--canvas)' }}
       >
         Back to home
       </Link>

@@ -12,7 +12,7 @@ export function DualMedium() {
           className="flex flex-col items-center"
         >
           <span className="eyebrow text-[0.65rem] text-champagne">What We Create</span>
-          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish tracking-wider">
+          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish tracking-wider" style={{ fontWeight: 500 }}>
             The Dual Medium Advantage
           </h2>
           <p className="mt-6 max-w-xl text-center font-sans text-base leading-relaxed text-balance" style={{ color: 'rgba(31,29,26,0.6)' }}>
@@ -28,7 +28,7 @@ export function DualMedium() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute left-0 top-0 w-[85%] h-[80%] rounded-[40px] overflow-hidden shadow-2xl"
+              className="absolute left-0 top-0 w-[85%] h-[80%] rounded-[40px] overflow-hidden shadow-2xl film-grain warm-tint"
             >
               <img
                 src="https://images.unsplash.com/photo-1617854818583-09e7f077a156?w=1000&q=85&fit=crop"
@@ -43,7 +43,7 @@ export function DualMedium() {
               whileInView={{ opacity: 1, x: 0, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute right-0 bottom-0 w-[55%] h-[45%] rounded-[30px] overflow-hidden z-10"
+              className="absolute right-0 bottom-0 w-[55%] h-[45%] rounded-[30px] overflow-hidden z-10 film-grain warm-tint"
               style={{
                 boxShadow: '0 30px 60px rgba(0,0,0,0.3)',
                 border: '4px solid var(--linen)',

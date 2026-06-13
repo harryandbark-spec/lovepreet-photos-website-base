@@ -58,7 +58,7 @@ export function Pricing() {
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
         <div className="flex flex-col items-center">
           <span className="eyebrow text-[0.65rem] text-champagne">Investment</span>
-          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish">
+          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish" style={{ fontWeight: 500 }}>
             Your Legacy Collection
           </h2>
           <p className="mt-8 max-w-xl text-center font-sans text-base leading-relaxed" style={{ color: 'rgba(31,29,26,0.6)' }}>
@@ -104,7 +104,7 @@ export function Pricing() {
                 )}
                 <h3
                   className="font-display text-2xl"
-                  style={{ color: tier.highlight ? 'var(--canvas)' : 'var(--ink)' }}
+                  style={{ color: tier.highlight ? 'var(--canvas)' : 'var(--ink)', fontWeight: 500 }}
                 >
                   {tier.name}
                 </h3>

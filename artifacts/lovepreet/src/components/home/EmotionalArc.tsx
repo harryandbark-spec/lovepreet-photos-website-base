@@ -39,7 +39,7 @@ export function EmotionalArc() {
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
         <div className="flex flex-col items-center">
           <span className="eyebrow text-[0.65rem] text-champagne">The Story Arc</span>
-          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl">
+          <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl" style={{ fontWeight: 500 }}>
             The Emotional Journey
           </h2>
           <p className="mt-5 max-w-xl text-center font-sans text-base leading-relaxed" style={{ color: 'rgba(31,29,26,0.6)' }}>
@@ -62,7 +62,7 @@ export function EmotionalArc() {
                 className="relative overflow-hidden"
                 style={{ order: phase.align === 'right' ? 2 : 1 }}
               >
-                <div className="aspect-[16/10] overflow-hidden">
+                <div className="aspect-[16/10] overflow-hidden film-grain warm-tint">
                   <img
                     src={phase.img}
                     alt={phase.phase}
@@ -86,7 +86,7 @@ export function EmotionalArc() {
                   </span>
                   <span className="eyebrow text-[0.6rem]" style={{ color: 'rgba(31,29,26,0.4)' }}>{phase.phase}</span>
                 </div>
-                <h3 className="mt-4 font-display text-2xl text-ink lg:text-3xl">
+                <h3 className="mt-4 font-display text-2xl text-ink lg:text-3xl" style={{ fontWeight: 500 }}>
                   {phase.title}
                 </h3>
                 <p className="mt-4 max-w-md font-sans text-base leading-relaxed" style={{ color: 'rgba(31,29,26,0.65)' }}>

@@ -25,7 +25,7 @@ export function FaqAccordion() {
   return (
     <section id="logistics" className="py-20 lg:py-28" style={{ backgroundColor: 'var(--linen)' }}>
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
-        <h2 className="text-center font-display text-4xl italic text-ink lg:text-5xl">
+        <h2 className="text-center font-display text-4xl italic text-ink lg:text-5xl" style={{ fontWeight: 500 }}>
           Logistics &amp; Curations
         </h2>
 
@@ -40,7 +40,7 @@ export function FaqAccordion() {
                   className="flex w-full items-center justify-between gap-6 py-6 text-left"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-display text-xl text-ink lg:text-2xl">
+                  <span className="font-display text-xl text-ink lg:text-2xl" style={{ fontWeight: 500 }}>
                     {faq.q}
                   </span>
                   <span
