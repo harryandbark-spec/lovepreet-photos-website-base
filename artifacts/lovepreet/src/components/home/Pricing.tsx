@@ -1,3 +1,6 @@
+import { useInquiry } from '@/components/InquiryContext'
+import { RevealOnScroll } from '@/components/RevealOnScroll'
+
 const TIERS = [
   {
     name: 'The Essential',
@@ -53,10 +56,11 @@ const TIERS = [
 ]
 
 export function Pricing() {
+  const { open } = useInquiry()
   return (
     <section id="pricing" className="py-20 lg:py-28" style={{ backgroundColor: 'var(--linen)' }}>
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
-        <div className="flex flex-col items-center">
+        <RevealOnScroll className="flex flex-col items-center">
           <span className="eyebrow text-[0.65rem] text-champagne">Investment</span>
           <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish" style={{ fontWeight: 500 }}>
             Your Legacy Collection
@@ -65,7 +69,7 @@ export function Pricing() {
             Every collection is custom-tailored. The prices below are starting
             points — final investment reflects your specific itinerary and vision.
           </p>
-        </div>
+        </RevealOnScroll>
 
         <div className="mt-14 grid gap-5 lg:grid-cols-3 lg:items-start">
           {TIERS.map((tier) => (
@@ -160,8 +164,8 @@ export function Pricing() {
                   ))}
                 </ul>
 
-                <a
-                  href="#inquire"
+                <button
+                  onClick={open}
                   className="mt-8 block w-full py-4 text-center font-sans text-sm transition-all duration-300 hover:-translate-y-0.5"
                   style={tier.highlight ? {
                     backgroundColor: 'var(--champagne)',
@@ -172,19 +176,19 @@ export function Pricing() {
                   }}
                   onMouseEnter={e => {
                     if (!tier.highlight) {
-                      (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'var(--ink)'
-                      ;(e.currentTarget as HTMLAnchorElement).style.color = 'var(--canvas)'
+                      (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--ink)'
+                      ;(e.currentTarget as HTMLButtonElement).style.color = 'var(--canvas)'
                     }
                   }}
                   onMouseLeave={e => {
                     if (!tier.highlight) {
-                      (e.currentTarget as HTMLAnchorElement).style.backgroundColor = ''
-                      ;(e.currentTarget as HTMLAnchorElement).style.color = 'var(--ink)'
+                      (e.currentTarget as HTMLButtonElement).style.backgroundColor = ''
+                      ;(e.currentTarget as HTMLButtonElement).style.color = 'var(--ink)'
                     }
                   }}
                 >
                   {tier.cta}
-                </a>
+                </button>
               </div>
             </div>
           ))}

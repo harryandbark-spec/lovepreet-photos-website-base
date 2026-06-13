@@ -1,11 +1,15 @@
+import { useInquiry } from '@/components/InquiryContext'
+import { RevealOnScroll } from '@/components/RevealOnScroll'
+
 export function CTABanner() {
+  const { open } = useInquiry()
   return (
     <section className="w-full py-16 md:py-24 lg:py-32" style={{ backgroundColor: 'var(--canvas)' }}>
       <div className="mx-auto max-w-6xl px-4 md:px-8">
         <div className="mb-12 h-px" style={{ background: 'linear-gradient(to right, transparent, var(--champagne), transparent)' }} />
       </div>
 
-      <div className="mx-auto max-w-3xl px-4 text-center md:px-8">
+      <RevealOnScroll className="mx-auto max-w-3xl px-4 text-center md:px-8">
         <div className="mb-4 flex flex-col items-center gap-2">
           <h2 className="font-display text-4xl italic text-ink md:text-5xl lg:text-6xl" style={{ fontWeight: 500 }}>
             Ready to Capture
@@ -26,8 +30,8 @@ export function CTABanner() {
           Let&apos;s discuss your vision and find the perfect photography package for your special day.
         </p>
 
-        <a
-          href="#inquire"
+        <button
+          onClick={open}
           className="magnetic-hover group inline-flex items-center gap-2 rounded-full border px-8 py-3.5 font-sans text-sm font-light uppercase tracking-[0.15em] text-ink transition-all duration-300 hover:text-canvas"
           style={{ borderColor: 'var(--champagne)' }}
           onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'var(--champagne)')}
@@ -47,8 +51,8 @@ export function CTABanner() {
               d="M13 7l5 5m0 0l-5 5m5-5H6"
             />
           </svg>
-        </a>
-      </div>
+        </button>
+      </RevealOnScroll>
 
       <div className="mx-auto mt-12 max-w-6xl px-4 md:px-8 md:mt-16">
         <div className="h-px" style={{ background: 'linear-gradient(to right, transparent, var(--champagne), transparent)' }} />

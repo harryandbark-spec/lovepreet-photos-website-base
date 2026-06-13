@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { RevealOnScroll } from '@/components/RevealOnScroll'
 
 const FAQS = [
   {
@@ -25,9 +26,11 @@ export function FaqAccordion() {
   return (
     <section id="logistics" className="py-20 lg:py-28" style={{ backgroundColor: 'var(--linen)' }}>
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
-        <h2 className="text-center font-display text-4xl italic text-ink lg:text-5xl" style={{ fontWeight: 500 }}>
-          Logistics &amp; Curations
-        </h2>
+        <RevealOnScroll className="text-center">
+          <h2 className="font-display text-4xl italic text-ink lg:text-5xl" style={{ fontWeight: 500 }}>
+            Logistics &amp; Curations
+          </h2>
+        </RevealOnScroll>
 
         <div className="mx-auto mt-12 max-w-[800px]">
           {FAQS.map((faq, index) => {

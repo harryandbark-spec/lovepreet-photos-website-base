@@ -124,27 +124,6 @@ export function DualMedium() {
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-          className="mx-auto mt-24 lg:mt-32 max-w-4xl rounded-3xl px-10 py-12 text-center shadow-lg"
-          style={{
-            border: '1px solid rgba(198,168,124,0.3)',
-            backgroundColor: 'rgba(255,255,255,0.4)',
-            backdropFilter: 'blur(20px)',
-          }}
-        >
-          <p className="font-sans text-lg leading-relaxed text-balance" style={{ color: 'rgba(31,29,26,0.75)' }}>
-            <span className="font-display text-2xl italic text-ink pr-2">
-              Single Crew Synergy
-            </span>
-            &mdash; One team, synchronized timelines, and a cohesive visual
-            identity across your entire multi-day itinerary. No separate vendors,
-            no creative conflicts, no timeline gaps.
-          </p>
-        </motion.div>
       </div>
     </section>
   )

@@ -1,3 +1,5 @@
+import { RevealOnScroll } from '@/components/RevealOnScroll'
+
 const TESTIMONIALS = [
   {
     quote:
@@ -29,12 +31,12 @@ export function Testimonial() {
   return (
     <section className="py-20 lg:py-28" style={{ backgroundColor: 'var(--canvas)' }}>
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
-        <div className="flex flex-col items-center">
+        <RevealOnScroll className="flex flex-col items-center">
           <span className="eyebrow text-[0.65rem] text-champagne">Client Stories</span>
           <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish" style={{ fontWeight: 500 }}>
             Words from Our Couples
           </h2>
-        </div>
+        </RevealOnScroll>
 
         <figure className="mx-auto mt-16 max-w-3xl text-center">
           <div className="flex justify-center" aria-hidden="true">

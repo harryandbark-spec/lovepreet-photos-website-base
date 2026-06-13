@@ -1,5 +1,6 @@
 import { Hero } from '@/components/home/Hero'
 import { DualMedium } from '@/components/home/DualMedium'
+import { SynergySection } from '@/components/home/SynergySection'
 import { CulturalShowcase } from '@/components/home/CulturalShowcase'
 import { GalleryGrid } from '@/components/home/GalleryGrid'
 import { EmotionalArc } from '@/components/home/EmotionalArc'
@@ -16,6 +17,7 @@ export default function Home() {
     <main>
       <Hero />
       <DualMedium />
+      <SynergySection />
       <CulturalShowcase />
       <GalleryGrid />
       <EmotionalArc />

@@ -1,3 +1,5 @@
+import { RevealOnScroll } from '@/components/RevealOnScroll'
+
 const PHASES = [
   {
     number: '01',
@@ -37,7 +39,7 @@ export function EmotionalArc() {
   return (
     <section className="py-20 lg:py-28" style={{ backgroundColor: 'var(--linen)' }}>
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
-        <div className="flex flex-col items-center">
+        <RevealOnScroll className="flex flex-col items-center">
           <span className="eyebrow text-[0.65rem] text-champagne">The Story Arc</span>
           <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl" style={{ fontWeight: 500 }}>
             The Emotional Journey
@@ -46,7 +48,7 @@ export function EmotionalArc() {
             A wedding day has a natural rhythm — a sequence of emotions that builds,
             peaks, and settles into something deeply felt. We follow that arc deliberately.
           </p>
-        </div>
+        </RevealOnScroll>
 
         <div className="mt-16 flex flex-col gap-0">
           {PHASES.map((phase, i) => (

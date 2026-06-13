@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
+import { InquiryProvider } from "@/components/InquiryContext";
+import { InquiryDrawer } from "@/components/InquiryDrawer";
 import Home from "@/pages/Home";
 import Make from "@/pages/Make";
 import NotFound from "@/pages/not-found";
@@ -36,9 +38,12 @@ function App() {
 
   return (
     <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-      <Nav />
-      <Router />
-      <Footer />
+      <InquiryProvider>
+        <Nav />
+        <Router />
+        <Footer />
+        <InquiryDrawer />
+      </InquiryProvider>
     </WouterRouter>
   );
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useInquiry } from '@/components/InquiryContext'
 
 const CEREMONIES = [
   {
@@ -37,6 +38,7 @@ const CEREMONIES = [
 ]
 
 export function CulturalShowcase() {
+  const { open } = useInquiry()
   const [active, setActive] = useState(0)
   const ceremony = CEREMONIES[active]
 
@@ -189,13 +191,13 @@ export function CulturalShowcase() {
               </ul>
             </div>
             <div className="flex items-center lg:pl-10">
-              <a
-                href="#inquire"
+              <button
+                onClick={open}
                 className="whitespace-nowrap rounded-full border px-8 py-3.5 font-sans text-sm font-light uppercase tracking-[0.15em] text-ink transition-all duration-300 hover:bg-champagne hover:text-canvas"
                 style={{ borderColor: 'var(--champagne)' }}
               >
                 Add Live Streaming
-              </a>
+              </button>
             </div>
           </div>
         </motion.div>

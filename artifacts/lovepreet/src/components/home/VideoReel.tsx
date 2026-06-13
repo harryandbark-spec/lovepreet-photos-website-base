@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { RevealOnScroll } from '@/components/RevealOnScroll'
 
 export function VideoReel() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -7,7 +8,7 @@ export function VideoReel() {
     <section className="relative py-24 lg:py-32" style={{ backgroundColor: 'var(--ink)', color: 'var(--canvas)' }}>
       <div className="pointer-events-none absolute inset-0 opacity-30" style={{ background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.4) 100%)' }} />
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10 relative z-10">
-        <div className="flex flex-col items-center">
+        <RevealOnScroll className="flex flex-col items-center">
           <span className="eyebrow text-[0.65rem] text-champagne">Cinematic Film</span>
           <h2 className="mt-4 text-center font-display text-4xl italic text-canvas lg:text-5xl" style={{ fontWeight: 500 }}>
             The 2025 Wedding Showreel
@@ -16,7 +17,7 @@ export function VideoReel() {
             90 seconds. Four weddings. One creative vision. See how every
             celebration becomes a film that earns its place on a cinema screen.
           </p>
-        </div>
+        </RevealOnScroll>
 
         <div className="relative mt-14 overflow-hidden">
           <div

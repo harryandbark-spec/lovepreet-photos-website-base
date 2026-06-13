@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react'
+import { useInquiry } from '@/components/InquiryContext'
 
 const NAV_LINKS = [
   { label: 'Our Work', href: '#gallery' },
   { label: 'Ceremonies', href: '#cultural' },
   { label: 'Investment', href: '#pricing' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Check Availability', href: '#inquire' },
 ]
 
 export function Nav() {
+  const { open: openDrawer } = useInquiry()
   const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     function onScroll() {
@@ -66,8 +67,8 @@ export function Nav() {
           ))}
         </nav>
 
-        <a
-          href="#inquire"
+        <button
+          onClick={openDrawer}
           className="hidden rounded-full px-6 py-2 font-display text-xl italic transition-all duration-300 hover:-translate-y-1 lg:inline-block"
           style={{
             backgroundColor: 'var(--accent-secondary)',
@@ -77,7 +78,7 @@ export function Nav() {
           onMouseLeave={e => (e.currentTarget.style.boxShadow = '')}
         >
           Check Availability
-        </a>
+        </button>
 
         <div className="flex items-center gap-3 lg:hidden">
           <a
@@ -90,7 +91,7 @@ export function Nav() {
           <button
             type="button"
             aria-label="Open menu"
-            onClick={() => setOpen(true)}
+            onClick={() => setMenuOpen(true)}
             className="flex h-8 w-8 flex-col items-center justify-center gap-[5px]"
           >
             <span className="h-px w-5" style={{ backgroundColor: 'var(--accent-secondary)' }} />
@@ -101,23 +102,23 @@ export function Nav() {
       </div>
 
       <div
-        className={`fixed inset-0 z-50 lg:hidden ${open ? 'pointer-events-auto' : 'pointer-events-none'}`}
-        aria-hidden={!open}
+        className={`fixed inset-0 z-50 lg:hidden ${menuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
+        aria-hidden={!menuOpen}
       >
         <div
-          onClick={() => setOpen(false)}
+          onClick={() => setMenuOpen(false)}
           className="absolute inset-0 transition-opacity duration-300"
           style={{
             backgroundColor: 'rgba(0,0,0,0.6)',
             backdropFilter: 'blur(8px)',
-            opacity: open ? 1 : 0,
+            opacity: menuOpen ? 1 : 0,
           }}
         />
         <div
           className="absolute right-0 top-0 h-full w-[80%] max-w-sm px-8 py-8 shadow-2xl"
           style={{
             backgroundColor: 'var(--linen)',
-            transform: open ? 'translateX(0)' : 'translateX(100%)',
+            transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
             transition: 'transform 420ms cubic-bezier(0.16,1,0.3,1)',
           }}
         >
@@ -128,7 +129,7 @@ export function Nav() {
             <button
               type="button"
               aria-label="Close menu"
-              onClick={() => setOpen(false)}
+              onClick={() => setMenuOpen(false)}
               className="text-2xl leading-none transition-colors hover:text-ink"
               style={{ color: 'rgba(31,29,26,0.5)' }}
             >
@@ -140,7 +141,7 @@ export function Nav() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setOpen(false)}
+                onClick={() => setMenuOpen(false)}
                 className="font-display text-2xl italic transition-colors hover:text-ink"
                 style={{ color: 'rgba(31,29,26,0.8)' }}
               >

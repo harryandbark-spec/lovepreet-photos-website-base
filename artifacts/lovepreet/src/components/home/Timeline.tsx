@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { RevealOnScroll } from '@/components/RevealOnScroll'
 
 const PHASES = [
   {
@@ -31,18 +32,12 @@ export function Timeline() {
   return (
     <section id="experience" className="py-24 lg:py-32" ref={containerRef} style={{ backgroundColor: 'var(--linen)' }}>
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center"
-        >
+        <RevealOnScroll className="flex flex-col items-center">
           <span className="eyebrow text-[0.65rem] text-champagne">The Process</span>
           <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish" style={{ fontWeight: 500 }}>
             The Cohesive Journey
           </h2>
-        </motion.div>
+        </RevealOnScroll>
 
         <div className="mt-20 lg:mt-32 flex flex-col lg:flex-row gap-16 lg:gap-24">
           <div className="w-full lg:w-1/2">

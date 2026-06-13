@@ -1,3 +1,5 @@
+import { useInquiry } from '@/components/InquiryContext'
+
 const NAV_COLUMNS = [
   {
     heading: 'Services',
@@ -45,6 +47,40 @@ const LEGAL_LINKS = [
   { label: 'Terms of Service', href: '#' },
 ]
 
+function FooterLink({ link }: { link: any }) {
+  const { open } = useInquiry()
+  if (link.href === '#inquire') {
+    return (
+      <button
+        onClick={open}
+        className="group relative inline-block font-sans text-[0.8125rem] font-light leading-relaxed tracking-wide transition-colors duration-300 hover:text-canvas"
+        style={{ color: 'rgba(252,251,250,0.5)' }}
+      >
+        {link.label}
+        <span
+          className="absolute bottom-0 left-0 h-px w-0 transition-all duration-300 group-hover:w-full"
+          style={{ backgroundColor: 'var(--champagne)' }}
+        />
+      </button>
+    )
+  }
+  return (
+    <a
+      href={link.href}
+      target={'external' in link && link.external ? '_blank' : undefined}
+      rel={'external' in link && link.external ? 'noopener noreferrer' : undefined}
+      className="group relative inline-block font-sans text-[0.8125rem] font-light leading-relaxed tracking-wide transition-colors duration-300 hover:text-canvas"
+      style={{ color: 'rgba(252,251,250,0.5)' }}
+    >
+      {link.label}
+      <span
+        className="absolute bottom-0 left-0 h-px w-0 transition-all duration-300 group-hover:w-full"
+        style={{ backgroundColor: 'var(--champagne)' }}
+      />
+    </a>
+  )
+}
+
 export function Footer() {
   return (
     <footer style={{ backgroundColor: 'var(--ink)', color: 'var(--canvas)' }}>
@@ -89,19 +125,7 @@ export function Footer() {
                 <ul className="flex flex-col gap-2.5">
                   {col.links.map((link) => (
                     <li key={link.label}>
-                      <a
-                        href={link.href}
-                        target={'external' in link && link.external ? '_blank' : undefined}
-                        rel={'external' in link && link.external ? 'noopener noreferrer' : undefined}
-                        className="group relative inline-block font-sans text-[0.8125rem] font-light leading-relaxed tracking-wide transition-colors duration-300 hover:text-canvas"
-                        style={{ color: 'rgba(252,251,250,0.5)' }}
-                      >
-                        {link.label}
-                        <span
-                          className="absolute bottom-0 left-0 h-px w-0 transition-all duration-300 group-hover:w-full"
-                          style={{ backgroundColor: 'var(--champagne)' }}
-                        />
-                      </a>
+                      <FooterLink link={link} />
                     </li>
                   ))}
                 </ul>

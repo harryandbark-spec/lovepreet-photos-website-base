@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { RevealOnScroll } from '@/components/RevealOnScroll'
 
 const FRAMES = [
   {
@@ -61,7 +62,7 @@ export function GalleryGrid() {
   return (
     <section id="gallery" ref={sectionRef} className="py-20 lg:py-28" style={{ backgroundColor: 'var(--canvas)' }}>
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
-        <div className="flex flex-col items-center gallery-reveal" data-delay="0ms" style={{ opacity: 0 }}>
+        <RevealOnScroll className="flex flex-col items-center">
           <span className="eyebrow text-[0.65rem] text-champagne">Portfolio</span>
           <h2 className="mt-4 text-center font-display text-4xl italic text-ink lg:text-5xl heading-flourish" style={{ fontWeight: 500 }}>
             The Documented Chapters
@@ -70,7 +71,7 @@ export function GalleryGrid() {
             Each frame a deliberate decision. Each ceremony, a chapter that deserves to be
             preserved with intention.
           </p>
-        </div>
+        </RevealOnScroll>
 
         <div className="mt-14 hidden grid-cols-3 gap-4 lg:grid" style={{ gridTemplateRows: 'repeat(3,minmax(220px,1fr))' }}>
           <GalleryFrame frame={FRAMES[0]} className="col-start-1 row-start-1 row-span-2" delay="80ms" />

@@ -1,7 +1,9 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { useInquiry } from '@/components/InquiryContext'
 
 export function Hero() {
+  const { open } = useInquiry()
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -85,8 +87,8 @@ export function Hero() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
             className="mt-12 flex flex-col items-start gap-6 sm:flex-row sm:items-center"
           >
-            <a
-              href="#inquire"
+            <button
+              onClick={open}
               className="magnetic-hover group relative overflow-hidden rounded-full px-10 py-4 font-sans text-[0.8rem] font-medium tracking-wide transition-all duration-500 hover:-translate-y-1"
               style={{
                 backgroundColor: 'var(--accent-secondary)',
@@ -98,7 +100,7 @@ export function Hero() {
             >
               <span className="relative z-10">Start the Conversation</span>
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-in-out group-hover:translate-x-full" />
-            </a>
+            </button>
 
             <a
               href="#gallery"
