@@ -47,7 +47,7 @@ const LEGAL_LINKS = [
 
 export function Footer() {
   return (
-    <footer style={{ backgroundColor: 'var(--canvas)', color: 'var(--ink)' }}>
+    <footer style={{ backgroundColor: 'var(--ink)', color: 'var(--canvas)' }}>
       <div className="h-px w-full opacity-60" style={{ background: 'linear-gradient(to right, transparent, var(--champagne), transparent)' }} />
 
       <div className="mx-auto max-w-[1440px] px-6 py-20 lg:px-16 xl:px-24">
@@ -55,13 +55,13 @@ export function Footer() {
           <a href="#top" aria-label="Lovepreet Photos & Films — home" className="group flex flex-col items-center">
             <span
               className="font-display text-5xl italic tracking-wide transition-colors duration-500 group-hover:text-champagne md:text-6xl lg:text-7xl"
-              style={{ color: 'var(--ink)', fontWeight: 500 }}
+              style={{ color: 'var(--canvas)', fontWeight: 500 }}
             >
               Lovepreet
             </span>
             <span
-              className="mt-4 eyebrow text-[0.65rem] tracking-[0.5em] transition-colors duration-500 group-hover:text-ink/60"
-              style={{ color: 'rgba(31,29,26,0.4)' }}
+              className="mt-4 eyebrow text-[0.65rem] tracking-[0.5em] transition-colors duration-500 group-hover:text-canvas/60"
+              style={{ color: 'rgba(252,251,250,0.4)' }}
             >
               Photos &amp; Films
             </span>
@@ -81,7 +81,7 @@ export function Footer() {
               <div className="md:px-8">
                 <p
                   className="mb-5 font-display text-base italic text-champagne"
-                  style={{ fontWeight: 400, letterSpacing: '0.01em' }}
+                  style={{ fontWeight: 500, letterSpacing: '0.01em' }}
                 >
                   {col.heading}
                 </p>
@@ -93,8 +93,8 @@ export function Footer() {
                         href={link.href}
                         target={'external' in link && link.external ? '_blank' : undefined}
                         rel={'external' in link && link.external ? 'noopener noreferrer' : undefined}
-                        className="group relative inline-block font-sans text-[0.8125rem] font-light leading-relaxed tracking-wide transition-colors duration-300 hover:text-ink"
-                        style={{ color: 'rgba(31,29,26,0.5)' }}
+                        className="group relative inline-block font-sans text-[0.8125rem] font-light leading-relaxed tracking-wide transition-colors duration-300 hover:text-canvas"
+                        style={{ color: 'rgba(252,251,250,0.5)' }}
                       >
                         {link.label}
                         <span
@@ -113,7 +113,7 @@ export function Footer() {
         <div className="my-14 h-px w-full" style={{ background: 'linear-gradient(to right, transparent, rgba(198,168,124,0.3), transparent)' }} />
 
         <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
-          <p className="font-sans text-xs font-light tracking-widest" style={{ color: 'rgba(31,29,26,0.3)' }}>
+          <p className="font-sans text-xs font-light tracking-widest" style={{ color: 'rgba(252,251,250,0.3)' }}>
             &copy; 2026 Lovepreet Photos &amp; Films. All rights reserved.
           </p>
 
@@ -126,7 +126,7 @@ export function Footer() {
                 <a
                   href={link.href}
                   className="font-sans text-xs font-light tracking-widest transition-colors duration-300 hover:text-champagne"
-                  style={{ color: 'rgba(31,29,26,0.3)' }}
+                  style={{ color: 'rgba(252,251,250,0.3)' }}
                 >
                   {link.label}
                 </a>
@@ -141,7 +141,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="eyebrow text-[0.6rem] tracking-[0.25em] transition-colors duration-300 hover:text-champagne"
-              style={{ color: 'rgba(31,29,26,0.3)' }}
+              style={{ color: 'rgba(252,251,250,0.3)' }}
             >
               @lovepreetphotography.ca
             </a>
@@ -149,7 +149,7 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-8 text-center font-display text-xs italic" style={{ color: 'rgba(31,29,26,0.2)' }}>
+        <p className="mt-8 text-center font-display text-xs italic" style={{ color: 'rgba(252,251,250,0.2)' }}>
           Consultation by private appointment only &mdash; Langley &middot; Surrey &middot; Vancouver
         </p>
       </div>
