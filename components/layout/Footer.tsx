@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'
+import { useState } from 'react'
 
 const NAV_COLUMNS = [
   {
@@ -50,6 +50,11 @@ const LEGAL_LINKS = [
 ]
 
 export function Footer() {
+  const [openCol, setOpenCol] = useState<string | null>(null)
+
+  const toggle = (heading: string) =>
+    setOpenCol((prev) => (prev === heading ? null : heading))
+
   return (
     <footer className="bg-canvas text-ink">
       {/* Champagne top rule */}
@@ -70,43 +75,65 @@ export function Footer() {
         </div>
 
         {/* 4-column grid */}
-        <div className="relative grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-4 md:gap-x-0">
+        <div className="relative grid grid-cols-2 gap-x-8 gap-y-0 md:grid-cols-4 md:gap-x-0">
 
-          {NAV_COLUMNS.map((col, colIdx) => (
-            <div key={col.heading} className="relative">
-              {/* Vertical divider between columns (desktop only) */}
-              {colIdx > 0 && (
-                <div className="absolute -left-px top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-champagne/25 to-transparent md:block" />
-              )}
+          {NAV_COLUMNS.map((col, colIdx) => {
+            const isOpen = openCol === col.heading
+            return (
+              <div key={col.heading} className="relative border-b border-champagne/15 md:border-b-0">
+                {/* Vertical divider between columns (desktop only) */}
+                {colIdx > 0 && (
+                  <div className="absolute -left-px top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-champagne/25 to-transparent md:block" />
+                )}
 
-              <div className="md:px-8">
-                {/* Column heading — italic serif script feel */}
-                <p
-                  className="mb-5 font-display text-base italic text-champagne"
-                  style={{ fontWeight: 400, letterSpacing: '0.01em' }}
-                >
-                  {col.heading}
-                </p>
+                <div className="md:px-8">
+                  {/* Column heading — clickable on mobile for dropdown */}
+                  <button
+                    onClick={() => toggle(col.heading)}
+                    className="flex w-full items-center justify-between py-4 md:pointer-events-none md:py-0 md:mb-5"
+                    aria-expanded={isOpen}
+                  >
+                    <p
+                      className="font-display text-base italic text-champagne"
+                      style={{ fontWeight: 600, letterSpacing: '0.01em' }}
+                    >
+                      {col.heading}
+                    </p>
+                    {/* Chevron visible on mobile only */}
+                    <span
+                      className={`block text-champagne/60 transition-transform duration-300 md:hidden ${isOpen ? 'rotate-180' : ''}`}
+                      aria-hidden
+                    >
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M2 5l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                  </button>
 
-                <ul className="flex flex-col gap-2.5">
-                  {col.links.map((link) => (
-                    <li key={link.label}>
-                      <a
-                        href={link.href}
-                        target={'external' in link && link.external ? '_blank' : undefined}
-                        rel={'external' in link && link.external ? 'noopener noreferrer' : undefined}
-                        className="group relative inline-block font-sans text-[0.8125rem] font-light leading-relaxed tracking-wide text-ink/50 transition-colors duration-300 hover:text-ink"
-                      >
-                        {link.label}
-                        {/* Underline fade-in on hover */}
-                        <span className="absolute bottom-0 left-0 h-px w-0 bg-champagne transition-all duration-300 group-hover:w-full" />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                  {/* Links — always visible on desktop, collapsible on mobile */}
+                  <ul
+                    className={`flex flex-col gap-2.5 overflow-hidden transition-all duration-300 ease-in-out md:max-h-none md:opacity-100 md:pb-0 ${
+                      isOpen ? 'max-h-64 opacity-100 pb-4' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100'
+                    }`}
+                  >
+                    {col.links.map((link) => (
+                      <li key={link.label}>
+                        <a
+                          href={link.href}
+                          target={'external' in link && link.external ? '_blank' : undefined}
+                          rel={'external' in link && link.external ? 'noopener noreferrer' : undefined}
+                          className="group relative inline-block font-sans text-[0.8125rem] font-light leading-relaxed tracking-wide text-ink/50 transition-colors duration-300 hover:text-ink"
+                        >
+                          {link.label}
+                          <span className="absolute bottom-0 left-0 h-px w-0 bg-champagne transition-all duration-300 group-hover:w-full" />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* Thin champagne rule */}

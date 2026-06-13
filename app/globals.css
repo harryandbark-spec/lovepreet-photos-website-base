@@ -10,6 +10,7 @@
   --color-ink: var(--ink);
   --color-linen: var(--linen);
   --color-champagne: var(--champagne);
+  --color-terracotta: var(--terracotta);
 
   --color-background: var(--canvas);
   --color-foreground: var(--ink);
@@ -21,6 +22,9 @@
   --ink: #1F1D1A;    /* Warm Charcoal */
   --linen: #F3EFEA;  /* Creamy Oat */
   --champagne: #C6A87C; /* Muted Gold/Bronze */
+
+  /* Warm Terracotta Accent */
+  --terracotta: #C1694F;
 
   /* Accent Color – Deep Teal */
   --accent-primary: #3A8E9F;

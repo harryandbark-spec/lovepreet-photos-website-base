@@ -97,12 +97,21 @@ export function Hero() {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="relative mt-10 w-full lg:mt-0 lg:w-[45%] xl:w-[50%] h-[60vh] lg:h-[85vh] rounded-t-[100px] lg:rounded-t-none lg:rounded-l-[150px] overflow-hidden shadow-2xl"
         >
+          {/* Mobile image */}
           <Image
-            src="/images/hero-couple.png"
+            src="/images/hero-punjabi-couple.png"
             alt="Punjabi wedding couple walking through a tree-lined path"
             fill
             priority
-            className="object-cover object-top transition-transform duration-[20s] ease-out hover:scale-110"
+            className="object-cover object-center block lg:hidden transition-transform duration-[20s] ease-out hover:scale-110"
+          />
+          {/* Desktop image */}
+          <Image
+            src="/images/hero-couple.png"
+            alt="Punjabi wedding couple"
+            fill
+            priority
+            className="object-cover object-top hidden lg:block transition-transform duration-[20s] ease-out hover:scale-110"
           />
           {/* Soft inner shadow for depth */}
           <div className="absolute inset-0 rounded-t-[100px] lg:rounded-t-none lg:rounded-l-[150px] shadow-[inset_0_0_60px_rgba(0,0,0,0.1)] pointer-events-none" />
