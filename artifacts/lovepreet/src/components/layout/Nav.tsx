@@ -12,39 +12,63 @@ export function Nav() {
   const { open: openDrawer } = useInquiry()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    setIsDesktop(mq.matches)
+    const handleMq = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+    mq.addEventListener('change', handleMq)
+    return () => mq.removeEventListener('change', handleMq)
+  }, [])
 
   useEffect(() => {
     function onScroll() {
-      setScrolled(window.scrollY > 60)
+      setScrolled(window.scrollY > 50)
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const desktopHeaderStyle = isDesktop
+    ? scrolled
+      ? {
+          borderBottom: '1px solid rgba(31,29,26,0.05)',
+          backgroundColor: 'rgba(255,255,255,0.82)',
+          backdropFilter: 'blur(20px)',
+          boxShadow: '0 2px 32px rgba(0,0,0,0.04)',
+        }
+      : {
+          borderBottom: '1px solid transparent',
+          backgroundColor: 'transparent',
+        }
+    : {}
+
+  const mobileScrolled = !isDesktop && scrolled
+
   return (
     <header
-      className="fixed left-0 right-0 top-0 z-50 transition-all duration-500"
-      style={scrolled ? {
-        borderBottom: '1px solid rgba(31,29,26,0.05)',
-        backgroundColor: 'rgba(255,255,255,0.8)',
-        backdropFilter: 'blur(20px)',
-        boxShadow: '0 2px 32px rgba(0,0,0,0.04)',
-      } : {
-        borderBottom: '1px solid transparent',
-        backgroundColor: 'transparent',
-      }}
+      className={[
+        'fixed left-0 right-0 top-0 z-50 transition-all duration-300 ease-in-out',
+        !isDesktop && scrolled
+          ? 'bg-stone-900/80 backdrop-blur-md shadow-[0_4px_32px_rgba(0,0,0,0.25)] border-b border-white/10'
+          : !isDesktop && !scrolled
+          ? 'bg-transparent border-b border-transparent'
+          : '',
+      ].join(' ')}
+      style={desktopHeaderStyle}
     >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-5 lg:px-10">
         <a href="#top" aria-label="Lovepreet Photos & Films — home" className="group flex flex-col items-start justify-center">
           <span
-            className="font-display text-2xl italic tracking-wide transition-colors duration-500 group-hover:text-champagne lg:text-3xl"
-            style={{ color: 'var(--ink)' }}
+            className="font-display text-2xl italic tracking-wide transition-colors duration-300 group-hover:text-champagne lg:text-3xl"
+            style={{ color: mobileScrolled ? 'rgba(255,255,255,0.95)' : 'var(--ink)' }}
           >
             Lovepreet
           </span>
           <span
-            className="mt-1 eyebrow text-[0.45rem] tracking-[0.4em] transition-colors duration-500 group-hover:text-ink/70"
-            style={{ color: 'rgba(31,29,26,0.5)' }}
+            className="mt-1 eyebrow text-[0.45rem] tracking-[0.4em] transition-colors duration-300"
+            style={{ color: mobileScrolled ? 'rgba(255,255,255,0.45)' : 'rgba(31,29,26,0.5)' }}
           >
             Photos &amp; Films
           </span>
@@ -83,8 +107,11 @@ export function Nav() {
         <div className="flex items-center gap-3 lg:hidden">
           <a
             href="tel:+16043657401"
-            className="rounded-full border px-4 py-2 font-sans text-xs"
-            style={{ borderColor: 'rgba(31,29,26,0.2)', color: 'rgba(31,29,26,0.8)' }}
+            className="rounded-full border px-4 py-2 font-sans text-xs transition-colors duration-300"
+            style={mobileScrolled
+              ? { borderColor: 'rgba(255,255,255,0.3)', color: 'rgba(255,255,255,0.8)' }
+              : { borderColor: 'rgba(31,29,26,0.2)', color: 'rgba(31,29,26,0.8)' }
+            }
           >
             Call
           </a>
@@ -94,9 +121,18 @@ export function Nav() {
             onClick={() => setMenuOpen(true)}
             className="flex h-8 w-8 flex-col items-center justify-center gap-[5px]"
           >
-            <span className="h-px w-5" style={{ backgroundColor: 'var(--accent-secondary)' }} />
-            <span className="h-px w-5" style={{ backgroundColor: 'var(--accent-secondary)' }} />
-            <span className="h-px w-3 self-start" style={{ backgroundColor: 'var(--accent-secondary)' }} />
+            <span
+              className="h-px w-5 transition-colors duration-300"
+              style={{ backgroundColor: mobileScrolled ? 'rgba(255,255,255,0.85)' : 'var(--accent-secondary)' }}
+            />
+            <span
+              className="h-px w-5 transition-colors duration-300"
+              style={{ backgroundColor: mobileScrolled ? 'rgba(255,255,255,0.85)' : 'var(--accent-secondary)' }}
+            />
+            <span
+              className="h-px w-3 self-start transition-colors duration-300"
+              style={{ backgroundColor: mobileScrolled ? 'rgba(255,255,255,0.85)' : 'var(--accent-secondary)' }}
+            />
           </button>
         </div>
       </div>
@@ -149,9 +185,18 @@ export function Nav() {
               </a>
             ))}
           </nav>
+
+          <button
+            onClick={() => { setMenuOpen(false); openDrawer() }}
+            className="mt-10 w-full rounded-full py-3.5 font-sans text-sm font-light uppercase tracking-[0.15em] transition-all duration-300"
+            style={{ backgroundColor: 'var(--accent-secondary)', color: 'var(--canvas)' }}
+          >
+            Check Availability
+          </button>
+
           <a
             href="tel:+16043657401"
-            className="mt-12 block rounded-full border px-6 py-3 text-center eyebrow text-xs tracking-widest"
+            className="mt-4 block rounded-full border px-6 py-3 text-center eyebrow text-xs tracking-widest"
             style={{
               borderColor: 'rgba(31,29,26,0.2)',
               color: 'rgba(31,29,26,0.7)',
