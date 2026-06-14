@@ -1,8 +1,8 @@
 {
-  "buildCommand": "cd artifacts/lovepreet && npm run build",
+  "buildCommand": "cd artifacts/lovepreet && pnpm run build",
   "outputDirectory": "artifacts/lovepreet/dist",
-  "devCommand": "cd artifacts/lovepreet && npm run dev",
-  "installCommand": "cd artifacts/lovepreet && npm install",
+  "devCommand": "cd artifacts/lovepreet && pnpm run dev",
+  "installCommand": "cd artifacts/lovepreet && pnpm install --no-frozen-lockfile",
   "framework": null,
   "rewrites": [
     {
