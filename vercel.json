@@ -1,0 +1,13 @@
+{
+  "buildCommand": "cd artifacts/lovepreet && npm run build",
+  "outputDirectory": "artifacts/lovepreet/dist",
+  "devCommand": "cd artifacts/lovepreet && npm run dev",
+  "installCommand": "cd artifacts/lovepreet && npm install",
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
