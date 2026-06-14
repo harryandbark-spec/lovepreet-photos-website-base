@@ -9,7 +9,7 @@ const CEREMONIES = [
     title: 'The Night of Celebration',
     body: 'A vibrant evening of dance, music, and family storytelling. We capture the raw joy — the aunties breaking into dance, the groomsmen group choreography, and the candlelit moments between families meeting for the first time.',
     detail: 'Evening lighting · Multiple cameras · Candid + editorial',
-    img: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1200&q=85&fit=crop',
+    img: 'placeholder',
   },
   {
     id: 'baraat',
@@ -17,7 +17,7 @@ const CEREMONIES = [
     title: 'The Grand Procession',
     body: 'The Baraat is pure cinematic energy — the dhol, the dancing, the arrival of the groom and his family. We position our crew across the procession route to capture every angle of this moving celebration.',
     detail: 'Outdoor · Drone-ready · High energy documentary',
-    img: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&q=85&fit=crop',
+    img: 'placeholder',
   },
   {
     id: 'anand-karaj',
@@ -25,7 +25,7 @@ const CEREMONIES = [
     title: 'The Sacred Ceremony',
     body: 'The Anand Karaj is the spiritual heart of a Sikh wedding — the four Lavaan circling the Guru Granth Sahib Ji. We approach this ceremony with the deepest reverence, capturing its profound meaning with stillness and care.',
     detail: 'Gurdwara lighting · Respectful positioning · Emotional focus',
-    img: 'https://images.unsplash.com/photo-1588392382834-a891154bca4d?w=1200&q=85&fit=crop',
+    img: 'placeholder',
   },
   {
     id: 'mehndi',
@@ -33,7 +33,7 @@ const CEREMONIES = [
     title: 'The Art of Adornment',
     body: 'Intimate, warm, and full of quiet beauty. The Mehndi ceremony is where we find the details — the intricate henna patterns, the jewellery, the whispered excitement between the bride and her sisters.',
     detail: 'Detail macro photography · Natural light · Intimate documentary',
-    img: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=85&fit=crop',
+    img: 'placeholder',
   },
 ]
 
@@ -84,10 +84,18 @@ export function CulturalShowcase() {
                 className="absolute inset-0"
               >
                 <img
-                  src={ceremony.img}
+                  src={ceremony.img === 'placeholder' ? '' : ceremony.img}
                   alt={ceremony.title}
                   className="absolute inset-0 h-full w-full object-cover"
+                  style={{ display: ceremony.img === 'placeholder' ? 'none' : 'block' }}
                 />
+                {ceremony.img === 'placeholder' && (
+                  <div className="absolute inset-0 flex items-center justify-center" style={{ backgroundColor: 'var(--linen)' }}>
+                    <span className="font-display text-2xl italic" style={{ color: 'rgba(31,29,26,0.3)' }}>
+                      Placeholder Image
+                    </span>
+                  </div>
+                )}
                 <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(31,29,26,0.2), transparent)' }} />
               </motion.div>
             </AnimatePresence>

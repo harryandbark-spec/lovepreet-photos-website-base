@@ -46,12 +46,11 @@ export function Timeline() {
           <div className="w-full lg:w-1/2">
             <div className="lg:sticky top-32 h-[500px] lg:h-[700px] w-full rounded-[40px] overflow-hidden shadow-2xl film-grain warm-tint">
               <motion.div style={{ scale }} className="w-full h-full">
-                <img
-                  src="https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?w=1000&q=85&fit=crop"
-                  alt="Couple walking"
-                  className="absolute inset-0 h-full w-full object-cover"
-                  style={{ position: 'relative', width: '100%', height: '100%', objectFit: 'cover' }}
-                />
+                <div className="flex h-full w-full items-center justify-center" style={{ backgroundColor: 'var(--linen)' }}>
+                  <span className="font-display text-2xl italic" style={{ color: 'rgba(31,29,26,0.3)' }}>
+                    Placeholder Image
+                  </span>
+                </div>
               </motion.div>
             </div>
           </div>

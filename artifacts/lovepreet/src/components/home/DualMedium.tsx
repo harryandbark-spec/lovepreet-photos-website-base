@@ -40,11 +40,16 @@ export function DualMedium() {
               className="absolute left-0 top-0 w-[85%] h-[80%] rounded-[40px] overflow-hidden shadow-2xl film-grain warm-tint"
             >
               <motion.div style={{ y: y1 }}>
-                <img
-                  src="https://images.unsplash.com/photo-1617854818583-09e7f077a156?w=1000&q=85&fit=crop"
-                  alt="Editorial fine-art still"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[20s] hover:scale-105"
-                />
+                <div
+                  className="absolute inset-0 h-full w-full transition-transform duration-[20s] hover:scale-105"
+                  style={{ backgroundColor: 'var(--linen)' }}
+                >
+                  <div className="flex h-full w-full items-center justify-center">
+                    <span className="font-display text-2xl italic" style={{ color: 'rgba(31,29,26,0.3)' }}>
+                      Placeholder Image
+                    </span>
+                  </div>
+                </div>
               </motion.div>
               <div className="absolute inset-0 bg-ink/10 mix-blend-overlay pointer-events-none" />
             </motion.div>
@@ -61,11 +66,16 @@ export function DualMedium() {
               }}
             >
               <motion.div style={{ y: y2 }}>
-                <img
-                  src="https://images.unsplash.com/photo-1610173827869-f8a1a17c65f3?w=800&q=85&fit=crop"
-                  alt="Cinematic film still"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[15s] hover:scale-105"
-                />
+                <div
+                  className="absolute inset-0 h-full w-full transition-transform duration-[15s] hover:scale-105"
+                  style={{ backgroundColor: 'var(--linen)' }}
+                >
+                  <div className="flex h-full w-full items-center justify-center">
+                    <span className="font-display text-2xl italic" style={{ color: 'rgba(31,29,26,0.3)' }}>
+                      Placeholder Image
+                    </span>
+                  </div>
+                </div>
               </motion.div>
               <div className="absolute inset-0 flex items-center justify-center bg-black/20 group cursor-pointer transition-colors hover:bg-black/40">
                 <motion.div

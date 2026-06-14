@@ -32,12 +32,14 @@ export function VideoReel() {
             aria-label="Play 2025 Wedding Showreel"
             onKeyDown={(e) => e.key === 'Enter' && setModalOpen(true)}
           >
-            <img
-              src="https://images.unsplash.com/photo-1583089892943-e02e5b017b6a?w=1260&q=85&fit=crop"
-              alt="Wedding showreel preview"
-              className="absolute inset-0 h-full w-full object-cover opacity-30 transition-opacity duration-500 group-hover:opacity-40"
-              loading="lazy"
-            />
+            <div
+              className="absolute inset-0 h-full w-full flex items-center justify-center opacity-30 transition-opacity duration-500 group-hover:opacity-40"
+              style={{ backgroundColor: 'var(--linen)' }}
+            >
+              <span className="font-display text-2xl italic" style={{ color: 'rgba(31,29,26,0.3)' }}>
+                Placeholder Image
+              </span>
+            </div>
 
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent 60%)' }} />
 
@@ -79,7 +81,7 @@ export function VideoReel() {
             { value: '1 Crew', label: 'Unified Direction' },
           ].map((stat) => (
             <div key={stat.label} className="flex flex-col items-center px-6 py-8" style={{ backgroundColor: 'rgba(255,255,255,0.04)' }}>
-              <AnimatedCounter value={stat.value} duration={1200} />
+              <AnimatedCounter value={stat.value} duration={2500} />
               <span className="eyebrow mt-2 text-[0.6rem]" style={{ color: 'rgba(255,255,255,0.3)' }}>{stat.label}</span>
             </div>
           ))}

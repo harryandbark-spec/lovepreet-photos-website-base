@@ -7,14 +7,11 @@ const TIERS = [
   {
     name: 'The Essential',
     subtitle: 'Photography Only',
-    note: 'Starting from',
-    price: '$4,200',
     description: 'Perfect for intimate ceremonies and single-day celebrations seeking fine-art photography coverage.',
     features: [
       '8 hours photography coverage',
       '350+ professionally edited images',
       'Private online gallery delivery',
-      'Print release included',
       'Engagement session add-on available',
     ],
     cta: 'Inquire About Essentials',
@@ -23,8 +20,6 @@ const TIERS = [
   {
     name: 'The Legacy',
     subtitle: 'Photos + Cinema',
-    note: 'Starting from',
-    price: '$8,500',
     description: 'Our most popular collection — unified photography and cinema under one creative direction.',
     features: [
       '2 days photography + cinema',
@@ -40,8 +35,6 @@ const TIERS = [
   {
     name: 'The Full Experience',
     subtitle: 'Multi-Day + Live Stream',
-    note: 'Starting from',
-    price: '$14,000',
     description: 'The complete Lovepreet experience for grand multi-day South Asian celebrations across the Lower Mainland.',
     features: [
       '3–4 day full coverage',
@@ -136,22 +129,6 @@ export function Pricing() {
                 >
                   {tier.subtitle}
                 </p>
-                <div className="mt-6 flex items-baseline gap-2">
-                  <span
-                    className="font-sans text-xs"
-                    style={{ color: tier.highlight ? 'rgba(252,251,250,0.4)' : 'rgba(31,29,26,0.4)' }}
-                  >
-                    {tier.note}
-                  </span>
-                  <motion.span
-                    className="font-display text-4xl"
-                    style={{ color: tier.highlight ? 'var(--champagne)' : 'var(--ink)' }}
-                    initial={{ scale: 1 }}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    {tier.price}
-                  </motion.span>
-                </div>
                 <div className="mt-4 flex items-center gap-3">
                   <div
                     className="h-px w-8"
