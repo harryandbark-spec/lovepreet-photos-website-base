@@ -18,8 +18,20 @@ export function Hero() {
       className="relative flex min-h-screen flex-col overflow-hidden pt-28 lg:pt-0"
       style={{ backgroundColor: 'var(--linen)' }}
     >
+      {/* Mobile background image with overlay */}
+      <div className="lg:hidden absolute inset-0">
+        <motion.img
+          style={{ y }}
+          src="/hero-couple.jpg"
+          alt="Luxury South Asian Wedding Couple"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+        <div className="absolute inset-0 pointer-events-none mix-blend-overlay" style={{ backgroundColor: 'rgba(197,168,130,0.15)' }} />
+      </div>
+
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.02]"
+        className="pointer-events-none absolute inset-0 opacity-[0.02] lg:opacity-[0.02]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")`,
         }}
@@ -32,7 +44,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="eyebrow text-[0.65rem]"
-            style={{ color: 'rgba(31,29,26,0.4)' }}
+            style={{ color: 'rgba(255,255,255,0.8) lg:rgba(31,29,26,0.4)' }}
           >
             Langley &middot; Surrey &middot; Vancouver
           </motion.p>
@@ -46,7 +58,7 @@ export function Hero() {
             <h1
               className="font-display leading-[1.05]"
               style={{
-                color: 'var(--ink)',
+                color: 'white',
                 fontSize: 'clamp(3.5rem,7vw,7rem)',
                 fontWeight: 500,
                 letterSpacing: '-0.02em',
@@ -61,10 +73,10 @@ export function Hero() {
             </h1>
 
             <div className="mt-8 flex items-center gap-3">
-              <div className="h-px w-12" style={{ backgroundColor: 'rgba(184,150,95,0.6)' }} />
+              <div className="h-px w-12" style={{ backgroundColor: 'rgba(184,150,95,0.8)' }} />
               <div
                 className="h-px flex-1 max-w-[160px]"
-                style={{ background: 'linear-gradient(to right, rgba(184,150,95,0.6), transparent)' }}
+                style={{ background: 'linear-gradient(to right, rgba(184,150,95,0.8), transparent)' }}
               />
             </div>
           </motion.div>
@@ -74,7 +86,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             className="mt-8 max-w-md font-sans text-base leading-relaxed lg:text-lg text-balance"
-            style={{ color: 'rgba(31,29,26,0.6)' }}
+            style={{ color: 'rgba(255,255,255,0.9) lg:rgba(31,29,26,0.6)' }}
           >
             Fine-art photography and heirloom cinema for luxury South Asian
             celebrations — crafted under one creative direction, so you stay
@@ -104,19 +116,19 @@ export function Hero() {
 
             <a
               href="#gallery"
-              className="group flex items-center gap-3 eyebrow text-[0.65rem] transition-colors hover:text-ink"
-              style={{ color: 'rgba(31,29,26,0.5)' }}
+              className="group flex items-center gap-3 eyebrow text-[0.65rem] transition-colors hover:text-white lg:hover:text-ink"
+              style={{ color: 'rgba(255,255,255,0.7) lg:rgba(31,29,26,0.5)' }}
             >
               <span className="relative">
                 View Portfolio
                 <span
                   className="absolute -bottom-1 left-0 h-px w-0 transition-all duration-300 group-hover:w-full"
-                  style={{ backgroundColor: 'var(--ink)' }}
+                  style={{ backgroundColor: 'white lg:var(--ink)' }}
                 />
               </span>
               <span
-                className="flex h-8 w-8 items-center justify-center rounded-full border transition-colors group-hover:border-ink/30"
-                style={{ borderColor: 'rgba(31,29,26,0.1)' }}
+                className="flex h-8 w-8 items-center justify-center rounded-full border transition-colors group-hover:border-white/30 lg:hover:border-ink/30"
+                style={{ borderColor: 'rgba(255,255,255,0.3) lg:rgba(31,29,26,0.1)' }}
               >
                 &rarr;
               </span>
@@ -124,20 +136,21 @@ export function Hero() {
           </motion.div>
         </div>
 
+        {/* Desktop image - hidden on mobile */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="relative mt-10 w-full lg:mt-0 lg:w-[45%] xl:w-[50%] h-[60vh] lg:h-[85vh] rounded-t-[100px] lg:rounded-t-none lg:rounded-l-[150px] overflow-hidden shadow-2xl film-grain warm-tint"
+          className="hidden lg:block relative mt-0 w-full lg:w-[55%] xl:w-[58%] h-[85vh] rounded-l-[150px] overflow-hidden shadow-2xl film-grain warm-tint"
         >
           <motion.img
             style={{ y }}
             src="/hero-couple.jpg"
             alt="Luxury South Asian Wedding Couple"
-            className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-[20s] ease-out hover:scale-110"
+            className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[20s] ease-out hover:scale-110"
           />
           <div
-            className="absolute inset-0 rounded-t-[100px] lg:rounded-t-none lg:rounded-l-[150px] pointer-events-none"
+            className="absolute inset-0 rounded-l-[150px] pointer-events-none"
             style={{ boxShadow: 'inset 0 0 60px rgba(0,0,0,0.1)' }}
           />
           <div
