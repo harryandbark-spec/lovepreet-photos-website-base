@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { RevealOnScroll } from '@/components/RevealOnScroll'
+import { AnimatedCounter } from '@/components/AnimatedCounter'
 
 export function VideoReel() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -78,7 +79,7 @@ export function VideoReel() {
             { value: '1 Crew', label: 'Unified Direction' },
           ].map((stat) => (
             <div key={stat.label} className="flex flex-col items-center px-6 py-8" style={{ backgroundColor: 'rgba(255,255,255,0.04)' }}>
-              <span className="font-display text-3xl italic text-canvas">{stat.value}</span>
+              <AnimatedCounter value={stat.value} duration={1200} />
               <span className="eyebrow mt-2 text-[0.6rem]" style={{ color: 'rgba(255,255,255,0.3)' }}>{stat.label}</span>
             </div>
           ))}

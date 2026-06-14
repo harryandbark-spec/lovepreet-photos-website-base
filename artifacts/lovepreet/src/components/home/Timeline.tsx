@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { RevealOnScroll } from '@/components/RevealOnScroll'
+import { AnimatedCounter } from '@/components/AnimatedCounter'
 
 const PHASES = [
   {
@@ -22,12 +23,14 @@ const PHASES = [
 
 export function Timeline() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [activePhase, setActivePhase] = useState(0)
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"]
   })
 
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.05, 1.1])
+  const lineProgress = useTransform(scrollYProgress, [0, 1], [0, 100])
 
   return (
     <section id="experience" className="py-24 lg:py-32" ref={containerRef} style={{ backgroundColor: 'var(--linen)' }}>
@@ -55,32 +58,51 @@ export function Timeline() {
 
           <div className="w-full lg:w-1/2 flex flex-col lg:py-32">
             <div className="flex flex-col gap-24 lg:gap-48">
-              {PHASES.map((phase) => (
+              {PHASES.map((phase, index) => (
                 <motion.div
                   key={phase.number}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ margin: "-20% 0px -20% 0px" }}
+                  viewport={{ margin: "-20% 0px -20% 0px", once: true }}
+                  onViewportEnter={() => setActivePhase(index)}
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   className="relative flex flex-col pl-8 lg:pl-12"
                   style={{ borderLeft: '2px solid rgba(198,168,124,0.2)' }}
                 >
-                  <span
+                  <motion.span
                     className="absolute -left-[3px] top-0 h-8 w-[2px]"
                     style={{ backgroundColor: 'var(--champagne)' }}
+                    initial={{ height: 0 }}
+                    whileInView={{ height: '32px' }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
                   />
 
-                  <span className="font-display text-6xl lg:text-8xl italic select-none" style={{ color: 'rgba(31,29,26,0.1)' }}>
-                    {phase.number}
-                  </span>
+                  <motion.span
+                    className="font-display text-6xl lg:text-8xl italic select-none"
+                    style={{ color: 'rgba(31,29,26,0.1)' }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.2 + 0.1 }}
+                  >
+                    <AnimatedCounter value={phase.number} duration={800} />
+                  </motion.span>
 
                   <h3 className="mt-6 font-display text-3xl lg:text-4xl text-ink" style={{ fontWeight: 500 }}>
                     {phase.title}
                   </h3>
 
-                  <p className="mt-6 font-sans text-base lg:text-lg leading-relaxed text-balance" style={{ color: 'rgba(31,29,26,0.6)' }}>
+                  <motion.p
+                    className="mt-6 font-sans text-base lg:text-lg leading-relaxed text-balance"
+                    style={{ color: 'rgba(31,29,26,0.6)' }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
+                  >
                     {phase.body}
-                  </p>
+                  </motion.p>
                 </motion.div>
               ))}
             </div>

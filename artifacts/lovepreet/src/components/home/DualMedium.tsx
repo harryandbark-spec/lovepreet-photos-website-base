@@ -1,8 +1,17 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 export function DualMedium() {
+  const ref = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -50])
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -30])
+
   return (
-    <section id="offerings" className="py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: 'var(--linen)' }}>
+    <section id="offerings" className="py-24 lg:py-32 overflow-hidden" ref={ref} style={{ backgroundColor: 'var(--linen)' }}>
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -24,23 +33,25 @@ export function DualMedium() {
         <div className="mt-20 lg:mt-32 flex flex-col lg:flex-row items-center lg:items-start justify-center gap-16 lg:gap-8">
           <div className="relative w-full lg:w-[55%] h-[600px] lg:h-[800px]">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.95, clipPath: 'inset(0 100% 0 0)' }}
+              whileInView={{ opacity: 1, scale: 1, clipPath: 'inset(0 0% 0 0)' }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="absolute left-0 top-0 w-[85%] h-[80%] rounded-[40px] overflow-hidden shadow-2xl film-grain warm-tint"
             >
-              <img
-                src="https://images.unsplash.com/photo-1617854818583-09e7f077a156?w=1000&q=85&fit=crop"
-                alt="Editorial fine-art still"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[20s] hover:scale-105"
-              />
+              <motion.div style={{ y: y1 }}>
+                <img
+                  src="https://images.unsplash.com/photo-1617854818583-09e7f077a156?w=1000&q=85&fit=crop"
+                  alt="Editorial fine-art still"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[20s] hover:scale-105"
+                />
+              </motion.div>
               <div className="absolute inset-0 bg-ink/10 mix-blend-overlay pointer-events-none" />
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 30, y: 30 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              initial={{ opacity: 0, x: 30, y: 30, clipPath: 'inset(100% 0 0 0)' }}
+              whileInView={{ opacity: 1, x: 0, y: 0, clipPath: 'inset(0 0 0 0)' }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="absolute right-0 bottom-0 w-[55%] h-[45%] rounded-[30px] overflow-hidden z-10 film-grain warm-tint"
@@ -49,17 +60,23 @@ export function DualMedium() {
                 border: '4px solid var(--linen)',
               }}
             >
-              <img
-                src="https://images.unsplash.com/photo-1610173827869-f8a1a17c65f3?w=800&q=85&fit=crop"
-                alt="Cinematic film still"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[15s] hover:scale-105"
-              />
+              <motion.div style={{ y: y2 }}>
+                <img
+                  src="https://images.unsplash.com/photo-1610173827869-f8a1a17c65f3?w=800&q=85&fit=crop"
+                  alt="Cinematic film still"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[15s] hover:scale-105"
+                />
+              </motion.div>
               <div className="absolute inset-0 flex items-center justify-center bg-black/20 group cursor-pointer transition-colors hover:bg-black/40">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-md transition-transform group-hover:scale-110">
+                <motion.div
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-md transition-transform group-hover:scale-110"
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <svg width="12" height="14" viewBox="0 0 14 16" fill="none" className="ml-1">
                     <path d="M1 1L13 8L1 15V1Z" fill="white" />
                   </svg>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>
@@ -86,11 +103,19 @@ export function DualMedium() {
                   'Medium format aesthetic quality',
                   'Natural & editorial lighting',
                   '350–700+ images delivered',
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-4 eyebrow text-[0.65rem] tracking-widest" style={{ color: 'rgba(31,29,26,0.5)' }}>
+                ].map((item, index) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 + index * 0.1 }}
+                    className="flex items-center gap-4 eyebrow text-[0.65rem] tracking-widest"
+                    style={{ color: 'rgba(31,29,26,0.5)' }}
+                  >
                     <span className="h-px w-6" style={{ backgroundColor: 'rgba(198,168,124,0.7)' }} />
                     {item}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </motion.div>
@@ -113,11 +138,19 @@ export function DualMedium() {
                   '3–8 minute feature films',
                   'Original music licensing',
                   'Multi-ceremony narrative arc',
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-4 eyebrow text-[0.65rem] tracking-widest" style={{ color: 'rgba(31,29,26,0.5)' }}>
+                ].map((item, index) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 + index * 0.1 }}
+                    className="flex items-center gap-4 eyebrow text-[0.65rem] tracking-widest"
+                    style={{ color: 'rgba(31,29,26,0.5)' }}
+                  >
                     <span className="h-px w-6" style={{ backgroundColor: 'rgba(198,168,124,0.7)' }} />
                     {item}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </motion.div>

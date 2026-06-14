@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useRef } from 'react'
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { useInquiry } from '@/components/InquiryContext'
 
 const CEREMONIES = [
@@ -41,9 +41,15 @@ export function CulturalShowcase() {
   const { open } = useInquiry()
   const [active, setActive] = useState(0)
   const ceremony = CEREMONIES[active]
+  const ref = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+  const y = useTransform(scrollYProgress, [0, 1], [0, -20])
 
   return (
-    <section id="cultural" className="py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: 'var(--canvas)', color: 'var(--ink)' }}>
+    <section id="cultural" className="py-24 lg:py-32 overflow-hidden" ref={ref} style={{ backgroundColor: 'var(--canvas)', color: 'var(--ink)' }}>
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -64,7 +70,10 @@ export function CulturalShowcase() {
         </motion.div>
 
         <div className="mt-20 lg:mt-28 relative">
-          <div className="relative w-full lg:w-[75%] lg:ml-auto aspect-[4/3] lg:aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl">
+          <motion.div
+            style={{ y }}
+            className="relative w-full lg:w-[75%] lg:ml-auto aspect-[4/3] lg:aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl"
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={ceremony.id}
@@ -82,7 +91,7 @@ export function CulturalShowcase() {
                 <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(31,29,26,0.2), transparent)' }} />
               </motion.div>
             </AnimatePresence>
-          </div>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: -30 }}

@@ -4,6 +4,7 @@ import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { InquiryProvider } from "@/components/InquiryContext";
 import { InquiryDrawer } from "@/components/InquiryDrawer";
+import { StickyMobileCTA } from "@/components/home/StickyMobileCTA";
 import Home from "@/pages/Home";
 import Make from "@/pages/Make";
 import NotFound from "@/pages/not-found";
@@ -43,6 +44,7 @@ function App() {
         <Router />
         <Footer />
         <InquiryDrawer />
+        <StickyMobileCTA />
       </InquiryProvider>
     </WouterRouter>
   );

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 type FormData = {
   name: string
@@ -17,7 +18,7 @@ const STEPS = [
 ]
 
 const inputClass =
-  'w-full border bg-canvas px-4 py-3.5 font-sans text-base text-ink placeholder:text-ink/30 transition-colors duration-200 focus:outline-none focus:border-ink/50'
+  'w-full border bg-canvas px-4 py-4 font-sans text-base text-ink placeholder:text-ink/30 transition-colors duration-200 focus:outline-none focus:border-ink/50 focus:ring-2 focus:ring-ink/10'
 
 export function IntakeForm() {
   const [step, setStep] = useState(1)
@@ -152,6 +153,8 @@ export function IntakeForm() {
                           onChange={(e) => set('name', e.target.value)}
                           placeholder="e.g. Simran & Deep"
                           required
+                          aria-required="true"
+                          autoComplete="name"
                           className={inputClass}
                           style={{ borderColor: 'rgba(31,29,26,0.15)' }}
                         />
@@ -166,6 +169,8 @@ export function IntakeForm() {
                           onChange={(e) => set('email', e.target.value)}
                           placeholder="your@email.com"
                           required
+                          aria-required="true"
+                          autoComplete="email"
                           className={inputClass}
                           style={{ borderColor: 'rgba(31,29,26,0.15)' }}
                         />
@@ -181,6 +186,7 @@ export function IntakeForm() {
                           value={data.phone}
                           onChange={(e) => set('phone', e.target.value)}
                           placeholder="+1 (604) 000-0000"
+                          autoComplete="tel"
                           className={inputClass}
                           style={{ borderColor: 'rgba(31,29,26,0.15)' }}
                         />
@@ -190,6 +196,7 @@ export function IntakeForm() {
                         type="button"
                         onClick={next}
                         disabled={!data.name || !data.email}
+                        aria-label="Continue to next step"
                         className="mt-2 w-full px-6 py-4 font-sans text-sm transition-opacity hover:opacity-90 disabled:opacity-30"
                         style={{ backgroundColor: 'var(--ink)', color: 'var(--canvas)' }}
                       >
@@ -214,6 +221,7 @@ export function IntakeForm() {
                           value={data.eventType}
                           onChange={(e) => set('eventType', e.target.value)}
                           required
+                          aria-required="true"
                           className={`${inputClass} appearance-none`}
                           style={{ borderColor: 'rgba(31,29,26,0.15)' }}
                         >
@@ -233,6 +241,7 @@ export function IntakeForm() {
                           value={data.date}
                           onChange={(e) => set('date', e.target.value)}
                           placeholder="e.g. June 20–23, 2026"
+                          autoComplete="off"
                           className={inputClass}
                           style={{ borderColor: 'rgba(31,29,26,0.15)' }}
                         />
@@ -246,6 +255,7 @@ export function IntakeForm() {
                           value={data.venues}
                           onChange={(e) => set('venues', e.target.value)}
                           placeholder="e.g. Langley, Surrey, Burnaby"
+                          autoComplete="off"
                           className={inputClass}
                           style={{ borderColor: 'rgba(31,29,26,0.15)' }}
                         />
@@ -255,6 +265,7 @@ export function IntakeForm() {
                         <button
                           type="button"
                           onClick={back}
+                          aria-label="Go back to previous step"
                           className="w-full px-6 py-4 font-sans text-sm transition-colors"
                           style={{ border: '1px solid rgba(31,29,26,0.15)', color: 'rgba(31,29,26,0.6)' }}
                         >
@@ -264,6 +275,7 @@ export function IntakeForm() {
                           type="button"
                           onClick={next}
                           disabled={!data.eventType}
+                          aria-label="Continue to next step"
                           className="w-full px-6 py-4 font-sans text-sm transition-opacity hover:opacity-90 disabled:opacity-30"
                           style={{ backgroundColor: 'var(--ink)', color: 'var(--canvas)' }}
                         >
@@ -299,6 +311,7 @@ export function IntakeForm() {
                         <button
                           type="button"
                           onClick={back}
+                          aria-label="Go back to previous step"
                           className="w-full px-6 py-4 font-sans text-sm transition-colors"
                           style={{ border: '1px solid rgba(31,29,26,0.15)', color: 'rgba(31,29,26,0.6)' }}
                         >
@@ -306,6 +319,7 @@ export function IntakeForm() {
                         </button>
                         <button
                           type="submit"
+                          aria-label="Submit inquiry form"
                           className="w-full px-6 py-4 font-sans text-sm transition-opacity hover:opacity-90"
                           style={{ backgroundColor: 'var(--ink)', color: 'var(--canvas)' }}
                         >

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { RevealOnScroll } from '@/components/RevealOnScroll'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const FAQS = [
   {
@@ -36,34 +37,55 @@ export function FaqAccordion() {
           {FAQS.map((faq, index) => {
             const isOpen = openIndex === index
             return (
-              <div key={faq.q} className="border-b" style={{ borderColor: 'rgba(31,29,26,0.1)' }}>
-                <button
+              <motion.div
+                key={faq.q}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="border-b"
+                style={{ borderColor: 'rgba(31,29,26,0.1)' }}
+              >
+                <motion.button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   className="flex w-full items-center justify-between gap-6 py-6 text-left"
                   aria-expanded={isOpen}
+                  whileHover={{ backgroundColor: 'rgba(31,29,26,0.02)' }}
+                  transition={{ duration: 0.2 }}
                 >
                   <span className="font-display text-xl text-ink lg:text-2xl" style={{ fontWeight: 500 }}>
                     {faq.q}
                   </span>
-                  <span
-                    className="shrink-0 text-2xl leading-none text-champagne transition-transform duration-300"
-                    style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
+                  <motion.span
+                    className="shrink-0 text-2xl leading-none text-champagne"
+                    animate={{ rotate: isOpen ? 45 : 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   >
                     +
-                  </span>
-                </button>
-                <div
-                  className="grid transition-all duration-500 ease-in-out"
-                  style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
-                >
-                  <div className="overflow-hidden">
-                    <p className="pb-6 font-sans text-base leading-relaxed" style={{ color: 'rgba(31,29,26,0.7)' }}>
-                      {faq.a}
-                    </p>
-                  </div>
-                </div>
-              </div>
+                  </motion.span>
+                </motion.button>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <motion.p
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1, duration: 0.3 }}
+                        className="pb-6 font-sans text-base leading-relaxed"
+                        style={{ color: 'rgba(31,29,26,0.7)' }}
+                      >
+                        {faq.a}
+                      </motion.p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             )
           })}
         </div>

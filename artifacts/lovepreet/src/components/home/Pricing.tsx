@@ -1,5 +1,7 @@
 import { useInquiry } from '@/components/InquiryContext'
 import { RevealOnScroll } from '@/components/RevealOnScroll'
+import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 const TIERS = [
   {
@@ -57,6 +59,8 @@ const TIERS = [
 
 export function Pricing() {
   const { open } = useInquiry()
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null)
+
   return (
     <section id="pricing" className="py-20 lg:py-28" style={{ backgroundColor: 'var(--linen)' }}>
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
@@ -69,30 +73,44 @@ export function Pricing() {
             Every collection is custom-tailored. The prices below are starting
             points — final investment reflects your specific itinerary and vision.
           </p>
+          <div className="mt-4 flex items-center gap-2 rounded-full border px-4 py-2" style={{ borderColor: 'rgba(184,150,95,0.3)', backgroundColor: 'rgba(184,150,95,0.05)' }}>
+            <span className="h-2 w-2 rounded-full" style={{ backgroundColor: 'var(--champagne)' }} />
+            <span className="eyebrow text-[0.6rem]" style={{ color: 'rgba(31,29,26,0.7)' }}>Limited 2026 dates available</span>
+          </div>
         </RevealOnScroll>
 
         <div className="mt-14 grid gap-5 lg:grid-cols-3 lg:items-start">
-          {TIERS.map((tier) => (
-            <div
+          {TIERS.map((tier, index) => (
+            <motion.div
               key={tier.name}
-              className="group relative flex flex-col border transition-all duration-300"
+              initial={{ opacity: 0, y: 40, rotateX: 10 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative flex flex-col border transition-all duration-500"
               style={tier.highlight ? {
                 borderColor: 'rgba(198,168,124,0.6)',
                 backgroundColor: 'var(--ink)',
                 color: 'var(--canvas)',
-                boxShadow: '0 20px 80px rgba(0,0,0,0.22), 0 0 0 1px rgba(197,168,130,0.2)',
+                boxShadow: hoveredCard === index 
+                  ? '0 30px 100px rgba(0,0,0,0.35), 0 0 0 1px rgba(197,168,130,0.3)'
+                  : '0 20px 80px rgba(0,0,0,0.22), 0 0 0 1px rgba(197,168,130,0.2)',
               } : {
                 borderColor: 'rgba(31,29,26,0.12)',
                 backgroundColor: 'var(--canvas)',
+                boxShadow: hoveredCard === index ? '0 25px 80px rgba(0,0,0,0.15)' : 'none',
               }}
+              onMouseEnter={() => setHoveredCard(index)}
+              onMouseLeave={() => setHoveredCard(null)}
+              whileHover={{ scale: 1.05, rotateX: -8, rotateY: 8 }}
             >
               {tier.highlight && (
-                <div
+                <motion.div
                   className="absolute -inset-px opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   style={{
                     background: 'linear-gradient(135deg, rgba(197,168,130,0.3) 0%, transparent 50%, rgba(197,168,130,0.15) 100%)',
-                    animation: 'pulseGlow 3s ease-in-out infinite',
                   }}
+                  animate={hoveredCard === index ? { opacity: 1 } : { opacity: 0 }}
                 />
               )}
 
@@ -125,12 +143,14 @@ export function Pricing() {
                   >
                     {tier.note}
                   </span>
-                  <span
+                  <motion.span
                     className="font-display text-4xl"
                     style={{ color: tier.highlight ? 'var(--champagne)' : 'var(--ink)' }}
+                    initial={{ scale: 1 }}
+                    whileHover={{ scale: 1.05 }}
                   >
                     {tier.price}
-                  </span>
+                  </motion.span>
                 </div>
                 <div className="mt-4 flex items-center gap-3">
                   <div
@@ -148,11 +168,19 @@ export function Pricing() {
 
               <div className="relative flex flex-1 flex-col px-8 py-8">
                 <ul className="flex flex-1 flex-col gap-4">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <span
+                  {tier.features.map((feature, featureIndex) => (
+                    <motion.li
+                      key={feature}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.15 + featureIndex * 0.05 }}
+                      className="flex items-start gap-3"
+                    >
+                      <motion.span
                         className="mt-1.5 h-1.5 w-1.5 shrink-0 rotate-45"
                         style={{ backgroundColor: tier.highlight ? 'var(--champagne)' : 'rgba(198,168,124,0.7)' }}
+                        whileHover={{ scale: 1.5, rotate: 90 }}
                       />
                       <span
                         className="font-sans text-sm leading-relaxed"
@@ -160,13 +188,13 @@ export function Pricing() {
                       >
                         {feature}
                       </span>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
 
-                <button
+                <motion.button
                   onClick={open}
-                  className="mt-8 block w-full py-4 text-center font-sans text-sm transition-all duration-300 hover:-translate-y-0.5"
+                  className="mt-8 block w-full py-4 text-center font-sans text-sm transition-all duration-300"
                   style={tier.highlight ? {
                     backgroundColor: 'var(--champagne)',
                     color: 'var(--ink)',
@@ -174,6 +202,8 @@ export function Pricing() {
                     border: '1px solid rgba(31,29,26,0.2)',
                     color: 'var(--ink)',
                   }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   onMouseEnter={e => {
                     if (!tier.highlight) {
                       (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--ink)'
@@ -188,9 +218,9 @@ export function Pricing() {
                   }}
                 >
                   {tier.cta}
-                </button>
+                </motion.button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useInquiry } from '@/components/InquiryContext'
 
 const NAV_LINKS = [
   { label: 'Our Work', href: '#gallery' },
   { label: 'Ceremonies', href: '#cultural' },
-  { label: 'Investment', href: '#pricing' },
+  { label: 'Plans', href: '#pricing' },
   { label: 'Experience', href: '#experience' },
 ]
 
@@ -47,7 +48,10 @@ export function Nav() {
   const mobileScrolled = !isDesktop && scrolled
 
   return (
-    <header
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={[
         'fixed left-0 right-0 top-0 z-50 transition-all duration-300 ease-in-out',
         !isDesktop && scrolled
@@ -59,55 +63,95 @@ export function Nav() {
       style={desktopHeaderStyle}
     >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-5 lg:px-10">
-        <a href="#top" aria-label="Lovepreet Photos & Films — home" className="group flex flex-col items-start justify-center">
-          <span
-            className="font-display text-2xl italic tracking-wide transition-colors duration-300 group-hover:text-champagne lg:text-3xl"
-            style={{ color: mobileScrolled ? 'rgba(255,255,255,0.95)' : 'var(--ink)' }}
+        <motion.a
+          href="#top"
+          aria-label="Lovepreet Photos & Films — home"
+          className="group flex flex-col items-start justify-center"
+          whileHover={{ scale: 1.02 }}
+        >
+          <motion.span
+            className="font-display text-2xl italic tracking-wide lg:text-3xl"
+            whileHover={{
+              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+            }}
+            transition={{
+              duration: 3,
+              ease: 'linear',
+            }}
+            style={{
+              background: 'linear-gradient(90deg, var(--ink) 0%, var(--champagne) 50%, var(--ink) 100%)',
+              backgroundSize: '200% auto',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              color: mobileScrolled ? 'rgba(255,255,255,0.95)' : 'var(--ink)',
+            }}
           >
             Lovepreet
-          </span>
+          </motion.span>
           <span
             className="mt-1 eyebrow text-[0.45rem] tracking-[0.4em] transition-colors duration-300"
             style={{ color: mobileScrolled ? 'rgba(255,255,255,0.45)' : 'rgba(31,29,26,0.5)' }}
           >
             Photos &amp; Films
           </span>
-        </a>
+        </motion.a>
 
         <nav className="hidden items-center gap-8 lg:flex">
-          {NAV_LINKS.slice(0, -1).map((link) => (
-            <a
+          {NAV_LINKS.slice(0, -1).map((link, index) => (
+            <motion.a
               key={link.href}
               href={link.href}
-              className="group relative font-display text-xl italic transition-colors duration-300"
-              style={{ color: 'var(--accent-secondary)' }}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
+              className="group relative font-display text-xl italic"
+              whileHover={{ y: -2 }}
             >
-              {link.label}
-              <span
+              <motion.span
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+                style={{
+                  background: 'linear-gradient(90deg, var(--accent-secondary) 0%, var(--champagne) 50%, var(--accent-secondary) 100%)',
+                  backgroundSize: '200% auto',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                {link.label}
+              </motion.span>
+              <motion.span
                 className="absolute -bottom-1 left-0 h-px w-0 transition-all duration-500 group-hover:w-full"
                 style={{ backgroundColor: 'var(--accent-secondary)' }}
               />
-            </a>
+            </motion.a>
           ))}
         </nav>
 
-        <button
+        <motion.button
           onClick={openDrawer}
-          className="hidden rounded-full px-6 py-2 font-display text-xl italic transition-all duration-300 hover:-translate-y-1 lg:inline-block"
+          className="hidden rounded-full px-6 py-2 font-display text-xl italic transition-all duration-300 lg:inline-block"
           style={{
             backgroundColor: 'var(--accent-secondary)',
             color: 'var(--canvas)',
           }}
-          onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 10px 30px rgba(166,103,116,0.35)')}
-          onMouseLeave={e => (e.currentTarget.style.boxShadow = '')}
+          whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(166,103,116,0.35)' }}
+          whileTap={{ scale: 0.95 }}
         >
           Check Availability
-        </button>
+        </motion.button>
 
         <div className="flex items-center gap-3 lg:hidden">
           <a
             href="tel:+16043657401"
-            className="rounded-full border px-4 py-2 font-sans text-xs transition-colors duration-300"
+            className="rounded-full border px-5 py-3 font-sans text-xs transition-colors duration-300"
             style={mobileScrolled
               ? { borderColor: 'rgba(255,255,255,0.3)', color: 'rgba(255,255,255,0.8)' }
               : { borderColor: 'rgba(31,29,26,0.2)', color: 'rgba(31,29,26,0.8)' }
@@ -119,18 +163,22 @@ export function Nav() {
             type="button"
             aria-label="Open menu"
             onClick={() => setMenuOpen(true)}
-            className="flex h-8 w-8 flex-col items-center justify-center gap-[5px]"
+            className="flex h-12 w-12 flex-col items-center justify-center gap-[5px] rounded-full transition-colors duration-300"
+            style={mobileScrolled
+              ? { backgroundColor: 'rgba(255,255,255,0.1)' }
+              : { backgroundColor: 'rgba(31,29,26,0.05)' }
+            }
           >
             <span
-              className="h-px w-5 transition-colors duration-300"
+              className="h-px w-6 transition-colors duration-300"
               style={{ backgroundColor: mobileScrolled ? 'rgba(255,255,255,0.85)' : 'var(--accent-secondary)' }}
             />
             <span
-              className="h-px w-5 transition-colors duration-300"
+              className="h-px w-6 transition-colors duration-300"
               style={{ backgroundColor: mobileScrolled ? 'rgba(255,255,255,0.85)' : 'var(--accent-secondary)' }}
             />
             <span
-              className="h-px w-3 self-start transition-colors duration-300"
+              className="h-px w-4 self-start transition-colors duration-300"
               style={{ backgroundColor: mobileScrolled ? 'rgba(255,255,255,0.85)' : 'var(--accent-secondary)' }}
             />
           </button>
@@ -172,13 +220,13 @@ export function Nav() {
               &times;
             </button>
           </div>
-          <nav className="flex flex-col gap-7">
+          <nav className="flex flex-col gap-6">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="font-display text-2xl italic transition-colors hover:text-ink"
+                className="rounded-lg px-4 py-3 font-display text-2xl italic transition-colors hover:text-ink hover:bg-stone-100"
                 style={{ color: 'rgba(31,29,26,0.8)' }}
               >
                 {link.label}
@@ -188,7 +236,7 @@ export function Nav() {
 
           <button
             onClick={() => { setMenuOpen(false); openDrawer() }}
-            className="mt-10 w-full rounded-full py-3.5 font-sans text-sm font-light uppercase tracking-[0.15em] transition-all duration-300"
+            className="mt-8 w-full rounded-full py-4 font-sans text-sm font-light uppercase tracking-[0.15em] transition-all duration-300"
             style={{ backgroundColor: 'var(--accent-secondary)', color: 'var(--canvas)' }}
           >
             Check Availability
@@ -196,7 +244,7 @@ export function Nav() {
 
           <a
             href="tel:+16043657401"
-            className="mt-4 block rounded-full border px-6 py-3 text-center eyebrow text-xs tracking-widest"
+            className="mt-4 block rounded-full border px-6 py-4 text-center eyebrow text-xs tracking-widest"
             style={{
               borderColor: 'rgba(31,29,26,0.2)',
               color: 'rgba(31,29,26,0.7)',
@@ -206,6 +254,6 @@ export function Nav() {
           </a>
         </div>
       </div>
-    </header>
+    </motion.header>
   )
 }

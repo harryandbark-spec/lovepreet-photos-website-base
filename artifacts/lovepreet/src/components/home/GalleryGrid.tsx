@@ -1,41 +1,43 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { RevealOnScroll } from '@/components/RevealOnScroll'
+import { ImageSkeleton } from '@/components/LoadingSkeleton'
 
 const FRAMES = [
   {
     title: 'The Vibrant Sangeet & Maiyan Rituals',
     location: 'Surrey, BC',
-    img: 'https://images.unsplash.com/photo-1583089892943-e02e5b017b6a?w=900&q=85&fit=crop',
+    img: '/placeholder-wedding-1.jpg',
   },
   {
     title: 'The Sacred Anand Karaj',
     location: 'Langley, BC',
-    img: 'https://images.unsplash.com/photo-1588392382834-a891154bca4d?w=900&q=85&fit=crop',
+    img: '/placeholder-wedding-2.jpg',
   },
   {
     title: 'Intimate Editorial Portraits',
     location: 'Lower Mainland, BC',
-    img: 'https://images.unsplash.com/photo-1610173827869-f8a1a17c65f3?w=900&q=85&fit=crop',
+    img: '/placeholder-wedding-3.jpg',
   },
   {
     title: 'The Grand Reception',
     location: 'Vancouver, BC',
-    img: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=900&q=85&fit=crop',
+    img: '/placeholder-wedding-4.jpg',
   },
   {
     title: 'The Baraat Procession',
     location: 'Surrey, BC',
-    img: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=900&q=85&fit=crop',
+    img: '/placeholder-wedding-5.jpg',
   },
   {
     title: 'Mehndi & Getting Ready',
     location: 'Langley, BC',
-    img: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&q=85&fit=crop',
+    img: '/placeholder-wedding-6.jpg',
   },
 ]
 
 export function GalleryGrid() {
   const sectionRef = useRef<HTMLElement>(null)
+  const [imagesLoaded, setImagesLoaded] = useState<Set<number>>(new Set())
 
   useEffect(() => {
     const section = sectionRef.current
@@ -74,21 +76,22 @@ export function GalleryGrid() {
         </RevealOnScroll>
 
         <div className="mt-14 hidden grid-cols-3 gap-4 lg:grid" style={{ gridTemplateRows: 'repeat(3,minmax(220px,1fr))' }}>
-          <GalleryFrame frame={FRAMES[0]} className="col-start-1 row-start-1 row-span-2" delay="80ms" />
-          <GalleryFrame frame={FRAMES[1]} className="col-start-2 row-start-1" delay="160ms" />
-          <GalleryFrame frame={FRAMES[2]} className="col-start-2 row-start-2" delay="240ms" />
-          <GalleryFrame frame={FRAMES[3]} className="col-start-3 row-start-1 row-span-2" delay="120ms" />
-          <GalleryFrame frame={FRAMES[4]} className="col-start-1 col-span-2 row-start-3" delay="200ms" />
-          <GalleryFrame frame={FRAMES[5]} className="col-start-3 row-start-3" delay="280ms" />
+          <GalleryFrame frame={FRAMES[0]} className="col-start-1 row-start-1 row-span-2" delay="80ms" index={0} />
+          <GalleryFrame frame={FRAMES[1]} className="col-start-2 row-start-1" delay="160ms" index={1} />
+          <GalleryFrame frame={FRAMES[2]} className="col-start-2 row-start-2" delay="240ms" index={2} />
+          <GalleryFrame frame={FRAMES[3]} className="col-start-3 row-start-1 row-span-2" delay="120ms" index={3} />
+          <GalleryFrame frame={FRAMES[4]} className="col-start-1 col-span-2 row-start-3" delay="200ms" index={4} />
+          <GalleryFrame frame={FRAMES[5]} className="col-start-3 row-start-3" delay="280ms" index={5} />
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-3 lg:hidden">
+        <div className="mt-10 grid grid-cols-2 gap-2 lg:hidden">
           {FRAMES.map((frame, i) => (
             <GalleryFrame
               key={frame.title}
               frame={frame}
               className="aspect-[3/4]"
               delay={`${i * 80}ms`}
+              index={i}
             />
           ))}
         </div>
@@ -107,11 +110,15 @@ function GalleryFrame({
   frame,
   className,
   delay,
+  index,
 }: {
   frame: (typeof FRAMES)[number]
   className?: string
   delay?: string
+  index: number
 }) {
+  const [isLoaded, setIsLoaded] = useState(false)
+
   return (
     <figure
       className={`gallery-reveal group relative overflow-hidden cursor-pointer film-grain warm-tint ${className}`}
@@ -119,11 +126,17 @@ function GalleryFrame({
       data-delay={delay}
       style={{ opacity: 0, backgroundColor: 'var(--linen)' }}
     >
+      {!isLoaded && (
+        <div className="absolute inset-0">
+          <ImageSkeleton className="h-full w-full" />
+        </div>
+      )}
       <img
         src={frame.img}
         alt={frame.title}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.07]"
+        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ease-out group-hover:scale-[1.07] ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
         loading="lazy"
+        onLoad={() => setIsLoaded(true)}
       />
 
       <div
