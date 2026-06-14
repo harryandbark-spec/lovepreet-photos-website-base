@@ -95,7 +95,7 @@ export function Pricing() {
               }}
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
-              whileHover={{ scale: 1.05, rotateX: -8, rotateY: 8 }}
+              whileHover={{ scale: 1.02 }}
             >
               {tier.highlight && (
                 <motion.div

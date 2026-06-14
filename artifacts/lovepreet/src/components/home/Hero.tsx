@@ -10,8 +10,23 @@ export function Hero() {
     target: ref,
     offset: ['start start', 'end start'],
   })
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '-10%'])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+
+  // Background parallax (slowest)
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '-15%'])
+  const bgOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+
+  // Headline parallax (medium)
+  const headlineY = useTransform(scrollYProgress, [0, 1], ['0%', '-30%'])
+  const headlineScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
+  const headlineRotateX = useTransform(scrollYProgress, [0, 1], [0, 5])
+
+  // Stats parallax (faster)
+  const statsY = useTransform(scrollYProgress, [0, 1], ['0%', '-40%'])
+  const statsOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
+
+  // CTA parallax (fastest)
+  const ctaY = useTransform(scrollYProgress, [0, 1], ['0%', '-50%'])
+  const ctaOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
 
   return (
     <section
@@ -22,7 +37,7 @@ export function Hero() {
     >
       {/* Full-screen hero image */}
       <motion.div
-        style={{ y, opacity }}
+        style={{ y: bgY, opacity: bgOpacity }}
         className="absolute inset-0"
       >
         <img
@@ -49,6 +64,7 @@ export function Hero() {
       <div className="relative z-10 flex h-full flex-col justify-center px-6 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <motion.div
+            style={{ y: headlineY }}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
@@ -120,6 +136,7 @@ export function Hero() {
 
             {/* Social proof */}
             <motion.div
+              style={{ y: statsY, opacity: statsOpacity }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
@@ -155,6 +172,7 @@ export function Hero() {
 
             {/* CTAs */}
             <motion.div
+              style={{ y: ctaY, opacity: ctaOpacity }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.9 }}

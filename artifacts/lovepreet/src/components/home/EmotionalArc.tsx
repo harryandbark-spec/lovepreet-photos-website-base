@@ -135,11 +135,11 @@ export function EmotionalArc() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: i * 0.15 + 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex flex-col justify-center px-0 py-10"
+                  className="flex flex-col justify-center px-4 py-8 lg:px-0 lg:py-10"
                   style={{
                     order: phase.align === 'right' ? 1 : 2,
-                    paddingLeft: phase.align === 'right' ? undefined : '3.5rem',
-                    paddingRight: phase.align === 'right' ? '3.5rem' : undefined,
+                    paddingLeft: phase.align === 'right' ? undefined : 'lg:3.5rem',
+                    paddingRight: phase.align === 'right' ? 'lg:3.5rem' : undefined,
                   }}
                 >
                   <div className="flex items-baseline gap-4">

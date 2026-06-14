@@ -261,7 +261,7 @@ export function IntakeForm() {
                         />
                       </div>
 
-                      <div className="mt-2 flex gap-3">
+                      <div className="mt-2 flex gap-3 flex-col sm:flex-row">
                         <button
                           type="button"
                           onClick={back}
@@ -307,7 +307,7 @@ export function IntakeForm() {
                         />
                       </div>
 
-                      <div className="mt-2 flex gap-3">
+                      <div className="mt-2 flex gap-3 flex-col sm:flex-row">
                         <button
                           type="button"
                           onClick={back}
