@@ -104,7 +104,7 @@ export function Footer() {
           </a>
         </div>
 
-        <div className="relative grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-4 md:gap-x-0">
+        <div className="relative grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:gap-x-0">
           {NAV_COLUMNS.map((col, colIdx) => (
             <div key={col.heading} className="relative">
               {colIdx > 0 && (
@@ -116,13 +116,13 @@ export function Footer() {
 
               <div className="md:px-8">
                 <p
-                  className="mb-5 font-display text-base italic text-champagne"
+                  className="mb-4 font-display text-sm italic text-champagne md:text-base"
                   style={{ fontWeight: 500, letterSpacing: '0.01em' }}
                 >
                   {col.heading}
                 </p>
 
-                <ul className="flex flex-col gap-2.5">
+                <ul className="flex flex-col gap-2">
                   {col.links.map((link) => (
                     <li key={link.label}>
                       <FooterLink link={link} />
@@ -134,22 +134,22 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="my-14 h-px w-full" style={{ background: 'linear-gradient(to right, transparent, rgba(198,168,124,0.3), transparent)' }} />
+        <div className="my-10 h-px w-full md:my-14" style={{ background: 'linear-gradient(to right, transparent, rgba(198,168,124,0.3), transparent)' }} />
 
-        <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
-          <p className="font-sans text-xs font-light tracking-widest" style={{ color: 'rgba(252,251,250,0.3)' }}>
+        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between sm:gap-5">
+          <p className="font-sans text-[0.7rem] font-light tracking-widest text-center sm:text-left" style={{ color: 'rgba(252,251,250,0.3)' }}>
             &copy; 2026 Lovepreet Photos &amp; Films. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4">
             {LEGAL_LINKS.map((link, i) => (
-              <span key={link.label} className="flex items-center gap-6">
+              <span key={link.label} className="flex items-center gap-4">
                 {i > 0 && (
                   <span className="h-3 w-px" style={{ backgroundColor: 'rgba(198,168,124,0.3)' }} />
                 )}
                 <a
                   href={link.href}
-                  className="font-sans text-xs font-light tracking-widest transition-colors duration-300 hover:text-champagne"
+                  className="font-sans text-[0.7rem] font-light tracking-widest transition-colors duration-300 hover:text-champagne"
                   style={{ color: 'rgba(252,251,250,0.3)' }}
                 >
                   {link.label}
@@ -164,7 +164,7 @@ export function Footer() {
               href="https://www.instagram.com/lovepreetphotography.ca/"
               target="_blank"
               rel="noopener noreferrer"
-              className="eyebrow text-[0.6rem] tracking-[0.25em] transition-colors duration-300 hover:text-champagne"
+              className="eyebrow text-[0.55rem] tracking-[0.25em] transition-colors duration-300 hover:text-champagne"
               style={{ color: 'rgba(252,251,250,0.3)' }}
             >
               @lovepreetphotography.ca
@@ -173,7 +173,7 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-8 text-center font-display text-xs italic" style={{ color: 'rgba(252,251,250,0.2)' }}>
+        <p className="mt-6 text-center font-display text-[0.65rem] italic md:mt-8 md:text-xs" style={{ color: 'rgba(252,251,250,0.2)' }}>
           Consultation by private appointment only &mdash; Langley &middot; Surrey &middot; Vancouver
         </p>
       </div>

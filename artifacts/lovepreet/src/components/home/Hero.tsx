@@ -48,15 +48,15 @@ export function Hero() {
       </motion.div>
 
       {/* Dramatic gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/60 to-black/75" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/40" />
-      <div className="absolute inset-0 pointer-events-none mix-blend-overlay" style={{ backgroundColor: 'rgba(197,168,130,0.12)' }} />
+      <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/55 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/35" />
+      <div className="absolute inset-0 pointer-events-none mix-blend-overlay" style={{ backgroundColor: 'rgba(197,168,130,0.08)' }} />
 
       {/* Subtle texture overlay */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        className="absolute inset-0 pointer-events-none opacity-[0.04]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E")`,
         }}
       />
 
@@ -72,11 +72,11 @@ export function Hero() {
           >
             {/* Location tag */}
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="eyebrow text-[0.7rem] tracking-[0.3em]"
-              style={{ color: 'rgba(255,255,255,0.6)' }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="eyebrow text-[0.6rem] tracking-[0.3em] font-medium"
+              style={{ color: 'rgba(255,255,255,0.65)' }}
             >
               LANGLEY · SURREY · VANCOUVER
             </motion.p>
@@ -86,13 +86,13 @@ export function Hero() {
               initial={{ opacity: 0, y: 30, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-              className="font-display leading-[0.95]"
+              className="font-display leading-[1.1]"
               style={{
                 color: 'white',
-                fontSize: 'clamp(3rem, 8vw, 9rem)',
-                fontWeight: 400,
-                letterSpacing: '-0.03em',
-                lineHeight: '0.9',
+                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+                fontWeight: 300,
+                letterSpacing: '-0.02em',
+                lineHeight: '1.15',
               }}
             >
               <motion.span
@@ -115,10 +115,10 @@ export function Hero() {
 
             {/* Decorative line */}
             <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: '120px' }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-              className="mt-8 h-px"
+              initial={{ width: 0, scaleX: 0 }}
+              animate={{ width: '100px', scaleX: 1 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
+              className="mt-6 h-px origin-left"
               style={{ backgroundColor: 'var(--champagne)' }}
             />
 
@@ -127,7 +127,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
-              className="mt-8 max-w-xl font-sans text-lg leading-relaxed text-balance"
+              className="mt-8 max-w-xl font-sans text-[0.95rem] leading-relaxed text-balance font-light"
               style={{ color: 'rgba(255,255,255,0.85)' }}
             >
               Fine-art photography and heirloom cinema for luxury South Asian
@@ -142,12 +142,12 @@ export function Hero() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
               className="mt-8 flex items-center gap-6"
             >
-              <div className="flex items-center gap-3">
-                <div className="flex -space-x-3">
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-2">
                   {[1, 2, 3].map((i) => (
                     <div
                       key={i}
-                      className="h-10 w-10 rounded-full border-2 border-white/20"
+                      className="h-8 w-8 rounded-full border-2 border-white/25"
                       style={{
                         backgroundColor: `rgba(255,255,255,${0.2 + i * 0.1})`,
                       }}
@@ -156,15 +156,15 @@ export function Hero() {
                 </div>
                 <div className="flex items-center gap-1">
                   <AnimatedCounter value="500+" duration={2500} />
-                  <span className="font-sans text-sm" style={{ color: 'rgba(255,255,255,0.9)' }}>
+                  <span className="font-sans text-xs font-light" style={{ color: 'rgba(255,255,255,0.9)' }}>
                     couples served
                   </span>
                 </div>
               </div>
-              <div className="h-px w-12" style={{ backgroundColor: 'rgba(255,255,255,0.3)' }} />
+              <div className="h-px w-8" style={{ backgroundColor: 'rgba(255,255,255,0.3)' }} />
               <div className="flex items-center gap-1">
                 <AnimatedCounter value="98%" duration={2500} />
-                <span className="font-sans text-sm" style={{ color: 'rgba(255,255,255,0.9)' }}>
+                <span className="font-sans text-xs font-light" style={{ color: 'rgba(255,255,255,0.9)' }}>
                   satisfaction
                 </span>
               </div>
@@ -176,11 +176,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.9 }}
-              className="mt-12 flex flex-col items-start gap-5 sm:flex-row sm:items-center"
+              className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center"
             >
               <motion.button
                 onClick={open}
-                className="premium-button group relative overflow-hidden rounded-full px-10 py-4 font-sans text-sm font-medium tracking-wide transition-all duration-300"
+                className="premium-button group relative overflow-hidden rounded-full px-10 py-3 font-sans text-xs font-medium tracking-wide transition-all duration-300"
                 style={{
                   backgroundColor: 'var(--accent-secondary)',
                   color: 'var(--canvas)',
@@ -193,9 +193,9 @@ export function Hero() {
 
               <motion.a
                 href="#gallery"
-                className="group flex items-center gap-3 font-sans text-sm transition-colors"
+                className="group flex items-center gap-2 font-sans text-xs transition-colors"
                 style={{ color: 'rgba(255,255,255,0.8)' }}
-                whileHover={{ x: 5 }}
+                whileHover={{ x: 6 }}
               >
                 <span className="relative">
                   View Portfolio
@@ -205,7 +205,7 @@ export function Hero() {
                   />
                 </span>
                 <motion.span
-                  className="flex h-10 w-10 items-center justify-center rounded-full border transition-colors group-hover:border-champagne/50"
+                  className="flex h-8 w-8 items-center justify-center rounded-full border transition-colors group-hover:border-champagne/50"
                   style={{ borderColor: 'rgba(255,255,255,0.3)' }}
                   whileHover={{ scale: 1.1, rotate: 45 }}
                 >
@@ -225,13 +225,13 @@ export function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="eyebrow text-[0.55rem] tracking-[0.2em]" style={{ color: 'rgba(255,255,255,0.5)' }}>
+          <span className="eyebrow text-[0.45rem] tracking-[0.25em]" style={{ color: 'rgba(255,255,255,0.5)' }}>
             SCROLL
           </span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="h-12 w-px"
+            className="h-10 w-px"
             style={{ backgroundColor: 'rgba(255,255,255,0.3)' }}
           />
         </div>

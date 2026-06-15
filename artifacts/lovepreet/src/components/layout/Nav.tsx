@@ -201,21 +201,21 @@ export function Nav() {
         <div
           className="absolute right-0 top-0 h-full w-[80%] max-w-sm px-8 py-8 shadow-2xl"
           style={{
-            backgroundColor: 'var(--linen)',
+            backgroundColor: 'var(--ink)',
             transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
             transition: 'transform 420ms cubic-bezier(0.16,1,0.3,1)',
           }}
         >
           <div className="mb-10 flex items-center justify-between">
-            <span className="eyebrow text-xs font-medium tracking-[0.28em]" style={{ color: 'rgba(31,29,26,0.4)' }}>
+            <span className="eyebrow text-xs font-medium tracking-[0.28em]" style={{ color: 'rgba(255,255,255,0.4)' }}>
               Menu
             </span>
             <button
               type="button"
               aria-label="Close menu"
               onClick={() => setMenuOpen(false)}
-              className="text-2xl leading-none transition-colors hover:text-ink"
-              style={{ color: 'rgba(31,29,26,0.5)' }}
+              className="text-2xl leading-none transition-colors hover:text-canvas"
+              style={{ color: 'rgba(255,255,255,0.5)' }}
             >
               &times;
             </button>
@@ -226,8 +226,8 @@ export function Nav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="rounded-lg px-4 py-3 font-display text-2xl italic transition-colors hover:text-ink hover:bg-stone-100"
-                style={{ color: 'rgba(31,29,26,0.8)' }}
+                className="rounded-lg px-4 py-3 font-display text-2xl italic transition-colors hover:text-canvas hover:bg-white/10"
+                style={{ color: 'rgba(255,255,255,0.8)' }}
               >
                 {link.label}
               </a>
@@ -246,8 +246,8 @@ export function Nav() {
             href="tel:+16043657401"
             className="mt-4 block rounded-full border px-6 py-4 text-center eyebrow text-xs tracking-widest"
             style={{
-              borderColor: 'rgba(31,29,26,0.2)',
-              color: 'rgba(31,29,26,0.7)',
+              borderColor: 'rgba(255,255,255,0.2)',
+              color: 'rgba(255,255,255,0.7)',
             }}
           >
             +1 604-365-7401
