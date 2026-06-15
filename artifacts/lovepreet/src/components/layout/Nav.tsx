@@ -178,7 +178,7 @@ export function Nav() {
               style={{ backgroundColor: mobileScrolled ? 'rgba(255,255,255,0.85)' : 'var(--accent-secondary)' }}
             />
             <span
-              className="h-px w-4 self-start transition-colors duration-300"
+              className="h-px w-6 transition-colors duration-300"
               style={{ backgroundColor: mobileScrolled ? 'rgba(255,255,255,0.85)' : 'var(--accent-secondary)' }}
             />
           </button>
@@ -202,6 +202,7 @@ export function Nav() {
           className="absolute right-0 top-0 h-full w-[80%] max-w-sm px-8 py-8 shadow-2xl"
           style={{
             backgroundColor: 'var(--ink)',
+            backgroundImage: 'linear-gradient(to bottom, var(--ink), var(--ink))',
             transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
             transition: 'transform 420ms cubic-bezier(0.16,1,0.3,1)',
           }}
