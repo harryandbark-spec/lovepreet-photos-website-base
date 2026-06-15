@@ -41,9 +41,10 @@ export function Hero() {
         className="absolute inset-0"
       >
         <img
-          src="/hero-couple.jpg"
+          src="/hero-couple.png"
           alt="Luxury South Asian Wedding Couple"
-          className="h-full w-full object-cover object-center"
+          className="h-full w-full object-cover"
+          style={{ objectPosition: 'center 25%' }}
         />
       </motion.div>
 
